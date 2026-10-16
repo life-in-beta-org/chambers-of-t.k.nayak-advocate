@@ -3,7 +3,7 @@ export default function About() {
 		<section id="about" className="editorial-section about-section">
 			<div className="container-site about-layout">
 				<div>
-					<p className="eyebrow">About the Chambers</p>
+					<p className="eyebrow">About Our Firm</p>
 					<h2 className="section-title">Thoughtful Counsel. Principled Advocacy.</h2>
 				</div>
 				<div className="about-copy">
@@ -25,10 +25,10 @@ export default function About() {
 					</div>
 				</div>
 			</div>
-			<div className="container-site about-note">
+			{/* <div className="container-site about-note">
 				<span className="about-mark" aria-hidden="true">TKN</span>
 				<p>Reserved visual space for a verified chambers, office or architectural image.</p>
-			</div>
+			</div> */}
 		</section>
 	);
 }

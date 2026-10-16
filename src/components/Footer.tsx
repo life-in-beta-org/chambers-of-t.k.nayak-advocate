@@ -1,12 +1,12 @@
 import Wordmark from "./layout/Wordmark";
 
 const footerLinks = [
-	{ label: "About", href: "#about" },
-	{ label: "Practice Areas", href: "#practice-areas" },
-	{ label: "Team", href: "#team" },
-	{ label: "Updates", href: "#updates" },
-	{ label: "Offices", href: "#offices" },
-	{ label: "Contact", href: "#contact" },
+	{ label: "About", href: "/#about" },
+	{ label: "Practice Areas", href: "/#practice-areas" },
+	{ label: "Team", href: "/#team" },
+	{ label: "Updates", href: "/#updates" },
+	{ label: "Offices", href: "/#offices" },
+	{ label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {

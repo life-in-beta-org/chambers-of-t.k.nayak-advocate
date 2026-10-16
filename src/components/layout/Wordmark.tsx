@@ -12,7 +12,7 @@ export default function Wordmark({
 
   return (
     <a
-      href="#home"
+      href="/#home"
       aria-label="Chambers of T. K. Nayak — Home"
       className={`inline-flex items-center gap-3 ${textColor}`}
     >

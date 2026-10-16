@@ -4,10 +4,11 @@ import { Menu, X } from "lucide-react";
 import logo from "../../assets/logo-black.png";
 
 const navigation = [
-  { label: "About", href: "#about" },
-  { label: "Practice Areas", href: "#practice-areas" },
-  { label: "Updates", href: "#updates" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Practice Areas", href: "/practice-areas" },
+  { label: "Updates", href: "/legal-updates" },
+  { label: "Media", href: "/media" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -21,7 +22,7 @@ export default function Header() {
     <header className="site-header relative z-50">
       <div className="container-site">
         <div className="header-row flex min-h-20 items-center justify-between gap-6">
-          <a href="#home" aria-label="Chambers of T. K. Nayak home">
+          <a href="/#home" aria-label="Chambers of T. K. Nayak home">
             <img className="site-logo" src={logo} alt="Chambers of T. K. Nayak" />
           </a>
 
@@ -41,7 +42,7 @@ export default function Header() {
           </nav>
 
           <a
-            href="#contact"
+            href="/#contact"
             className="header-cta hidden px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors md:inline-flex"
           >
             Contact Chambers
@@ -77,7 +78,7 @@ export default function Header() {
             ))}
 
             <a
-              href="#contact"
+              href="/#contact"
               onClick={closeMenu}
               className="header-cta mt-3 inline-flex px-5 py-3 text-xs font-semibold uppercase tracking-wider"
             >

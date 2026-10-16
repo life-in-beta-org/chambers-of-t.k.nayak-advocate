@@ -1,6 +1,64 @@
+import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { KeyboardEvent, PointerEvent } from "react";
 import justica from "../assets/justica.png";
+import { heroPracticeAreas } from "../data/heroPracticeAreas";
 
 export default function Hero() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [previewIndex, setPreviewIndex] = useState<number | null>(null);
+  const [tabsPaused, setTabsPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const displayedIndex = previewIndex ?? selectedIndex;
+  const activeArea = heroPracticeAreas[displayedIndex];
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setReducedMotion(motionQuery.matches);
+    motionQuery.addEventListener("change", updateMotionPreference);
+    return () => motionQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    if (tabsPaused || reducedMotion) return;
+    const interval = window.setInterval(() => {
+      setSelectedIndex((currentIndex) => (currentIndex + 1) % heroPracticeAreas.length);
+      setPreviewIndex(null);
+    }, 3500);
+    return () => window.clearInterval(interval);
+  }, [reducedMotion, tabsPaused]);
+
+  function selectArea(index: number) {
+    setSelectedIndex(index);
+    setPreviewIndex(index);
+  }
+
+  function moveTab(index: number) {
+    const nextIndex = (index + heroPracticeAreas.length) % heroPracticeAreas.length;
+    setSelectedIndex(nextIndex);
+    setPreviewIndex(nextIndex);
+    document.getElementById(`hero-tab-${heroPracticeAreas[nextIndex].id}`)?.focus();
+  }
+
+  function handleTabKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      event.preventDefault();
+      moveTab(index + 1);
+    }
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      event.preventDefault();
+      moveTab(index - 1);
+    }
+    if (event.key === "Home") {
+      event.preventDefault();
+      moveTab(0);
+    }
+    if (event.key === "End") {
+      event.preventDefault();
+      moveTab(heroPracticeAreas.length - 1);
+    }
+  }
+
   return (
     <section id="home" className="hero-section">
       <div className="hero-grid container-site">
@@ -30,16 +88,47 @@ export default function Hero() {
             </div>
 
             <aside className="hero-services" aria-label="Practice areas">
-              <div className="service-icons">
-                <span>§</span><span>▤</span><span>♟</span><span>⚖</span>
+              <div
+                className="service-icons"
+                role="tablist"
+                aria-label="Practice area categories"
+                onPointerEnter={(event) => { if (event.pointerType === "mouse") setTabsPaused(true); }}
+                onPointerLeave={(event) => { if (event.pointerType === "mouse") { setTabsPaused(false); setPreviewIndex(null); } }}
+                onFocusCapture={() => setTabsPaused(true)}
+                onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setTabsPaused(false); }}
+              >
+                {heroPracticeAreas.map((area, index) => {
+                  const Icon = area.icon;
+                  return (
+                    <button
+                      key={area.id}
+                      id={`hero-tab-${area.id}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={displayedIndex === index}
+                      aria-controls="hero-practice-panel"
+                      aria-label={area.label}
+                      className={`service-tab${displayedIndex === index ? " is-active" : ""}`}
+                      onClick={() => selectArea(index)}
+                      onPointerEnter={(event: PointerEvent<HTMLButtonElement>) => { if (event.pointerType === "mouse") setPreviewIndex(index); }}
+                      onKeyDown={(event) => handleTabKeyDown(event, index)}
+                    >
+                      <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
+                    </button>
+                  );
+                })}
               </div>
-              <p className="service-intro"><span>-&gt;</span> Corporate Law Services</p>
-              <p className="service-detail">Guiding businesses through legal complexities with unparalleled expertise.</p>
-              <ul>
-                <li>Family Law Consultation</li>
-                <li>Intellectual Property Protection</li>
-                <li>Criminal Defense Services</li>
-              </ul>
+              <div id="hero-practice-panel" className="hero-practice-panel" role="tabpanel" aria-live="polite" aria-labelledby={`hero-tab-${activeArea.id}`}>
+                <div key={activeArea.id} className="hero-panel-content">
+                  <p className="service-intro"><span aria-hidden="true">-&gt;</span> {activeArea.title}</p>
+                  <p className="service-detail">{activeArea.description}</p>
+                  <ul>
+                    {activeArea.services.map((service) => (
+                      <li key={service}><ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />{service}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </aside>
             
           </div>

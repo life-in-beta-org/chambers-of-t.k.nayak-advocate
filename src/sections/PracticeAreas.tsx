@@ -1,32 +1,28 @@
-interface PracticeArea {
-	number: string;
-	title: string;
-	description: string;
+import { practiceAreas } from "../data/content";
+
+interface PracticeAreasProps {
+	page?: boolean;
 }
 
-const practiceAreas: PracticeArea[] = [
-	{ number: "01", title: "Corporate and Commercial Law", description: "Placeholder description for commercial advisory and business-related enquiries." },
-	{ number: "02", title: "Civil Litigation and Dispute Resolution", description: "Placeholder description for civil disputes, strategy and representation." },
-	{ number: "03", title: "Family Law", description: "Placeholder description for family-related legal consultations." },
-	{ number: "04", title: "Intellectual Property", description: "Placeholder description for protection and advisory work concerning intellectual property." },
-	{ number: "05", title: "Criminal Law", description: "Placeholder description for criminal law enquiries and representation." },
-	{ number: "06", title: "Constitutional and Administrative Law", description: "Placeholder description for public law and administrative matters." },
-];
+export default function PracticeAreas({ page = false }: PracticeAreasProps) {
+	const visibleAreas = page ? practiceAreas : practiceAreas.slice(0, 4);
 
-export default function PracticeAreas() {
 	return (
-		<section id="practice-areas" className="editorial-section practice-section section-wash">
+		<section id={page ? "practice-areas-page" : "practice-areas"} className="editorial-section practice-section section-wash">
 			<div className="container-site">
 				<div className="section-heading-row">
 					<div>
 						<p className="eyebrow">Areas of Practice</p>
 						<h2 className="section-title">The work, considered carefully.</h2>
 					</div>
-					<p className="section-intro">These categories are placeholders and should be revised against the chambers&apos; confirmed services.</p>
+					<div className="section-intro-block">
+						<p className="section-intro">These categories are placeholders and should be revised against the chambers&apos; confirmed services.</p>
+						{!page && <a className="section-link" href="/practice-areas">View all practice areas <span aria-hidden="true">-&gt;</span></a>}
+					</div>
 				</div>
 				<div className="practice-list">
-					{practiceAreas.map((area) => (
-						<a className="practice-entry" href="#contact" key={area.number}>
+					{visibleAreas.map((area) => (
+						<a className="practice-entry" href={page ? `#practice-${area.number}` : `/practice-areas#practice-${area.number}`} id={page ? `practice-${area.number}` : undefined} key={area.number}>
 							<span className="practice-number">{area.number}</span>
 							<span className="practice-content">
 								<h3>{area.title}</h3>

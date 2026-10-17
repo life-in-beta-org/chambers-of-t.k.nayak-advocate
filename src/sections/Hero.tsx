@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, PointerEvent } from "react";
 import justica from "../assets/justica.png";
 import { heroPracticeAreas } from "../data/heroPracticeAreas";
@@ -8,9 +8,13 @@ export default function Hero() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
   const [tabsPaused, setTabsPaused] = useState(false);
+  const [tagIndex, setTagIndex] = useState(0);
+  const [tagPaused, setTagPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const heroRef = useRef<HTMLElement>(null);
   const displayedIndex = previewIndex ?? selectedIndex;
   const activeArea = heroPracticeAreas[displayedIndex];
+  const activeTag = activeArea.services[tagIndex % activeArea.services.length];
 
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -27,6 +31,37 @@ export default function Hero() {
     }, 3500);
     return () => window.clearInterval(interval);
   }, [reducedMotion, tabsPaused]);
+
+  useEffect(() => {
+    if (tagPaused || reducedMotion) return;
+    const interval = window.setInterval(() => {
+      setTagIndex((currentIndex) => (currentIndex + 1) % activeArea.services.length);
+    }, 3500);
+    return () => window.clearInterval(interval);
+  }, [activeArea.services.length, reducedMotion, tagPaused]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      heroRef.current?.style.removeProperty("--hero-scroll-shift");
+      return;
+    }
+
+    let frame = 0;
+    const updateScrollShift = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const shift = Math.min(window.scrollY * 0.12, 72);
+        heroRef.current?.style.setProperty("--hero-scroll-shift", `${shift}px`);
+      });
+    };
+
+    updateScrollShift();
+    window.addEventListener("scroll", updateScrollShift, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateScrollShift);
+    };
+  }, [reducedMotion]);
 
   function selectArea(index: number) {
     setSelectedIndex(index);
@@ -60,9 +95,9 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="hero-section">
+    <section ref={heroRef} id="home" className="hero-section">
       <div className="hero-grid container-site">
-        <div className="hero-bottom-word" aria-hidden="true">LAWYER</div>
+        <div className="hero-bottom-word mb-25" aria-hidden="true">ADVOCATE</div>
 
         <div className="hero-copy">
           {/* <p className="hero-kicker">Chambers of T. K. Nayak</p> */}
@@ -72,6 +107,15 @@ export default function Hero() {
             </span>
             <span className="hero-line">Every Situation</span>
           </h1>
+          <p
+            key={activeTag}
+            className="hero-rotating-tag"
+            aria-live="polite"
+            onMouseEnter={() => setTagPaused(true)}
+            onMouseLeave={() => setTagPaused(false)}
+          >
+            {activeTag}
+          </p>
           <p className="hero-description">
                 At Chambers, we transform legal complexities into strategic
                 opportunities. Our seasoned team delivers exceptional,

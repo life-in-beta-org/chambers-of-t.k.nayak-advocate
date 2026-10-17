@@ -13,7 +13,7 @@ export default function PracticeAreas({ page = false }: PracticeAreasProps) {
 				<div className="section-heading-row">
 					<div>
 						<p className="eyebrow">Areas of Practice</p>
-						<h2 className="section-title">The work, considered carefully.</h2>
+						<h2 className="section-title">Experience in law. <br/> Focused on you.</h2>
 					</div>
 					<div className="section-intro-block">
 						<p className="section-intro">These categories are placeholders and should be revised against the chambers&apos; confirmed services.</p>

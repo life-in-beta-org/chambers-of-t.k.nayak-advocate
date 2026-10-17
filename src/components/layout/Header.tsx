@@ -8,7 +8,7 @@ const navigation = [
   { label: "Practice Areas", href: "/practice-areas" },
   { label: "Updates", href: "/legal-updates" },
   { label: "Media", href: "/media" },
-  { label: "Contact", href: "/#contact" },
+  // { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -16,6 +16,14 @@ export default function Header() {
 
   function closeMenu() {
     setMenuOpen(false);
+  }
+
+  function handleNavigation(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    if (!href.startsWith("/") || href.includes("#")) return;
+    event.preventDefault();
+    window.history.pushState({}, "", href);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    closeMenu();
   }
 
   return (
@@ -34,6 +42,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(event) => handleNavigation(event, item.href)}
                 className="header-link text-sm transition-colors"
               >
                 {item.label}
@@ -70,7 +79,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={closeMenu}
+                onClick={(event) => { handleNavigation(event, item.href); closeMenu(); }}
                 className="header-link block py-3 text-sm"
               >
                 {item.label}

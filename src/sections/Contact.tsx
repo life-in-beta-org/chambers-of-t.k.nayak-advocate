@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
+import contact from "../data/contact.json";
 
 interface FormValues {
   name: string;
@@ -12,6 +13,8 @@ interface FormValues {
 const initialValues: FormValues = { name: "", email: "", phone: "", subject: "", message: "" };
 
 export default function Contact() {
+  const phoneHref = `tel:${contact.phone.replace(/\s+/g, "")}`;
+  const whatsappHref = `https://wa.me/${contact.whatsappNumber}`;
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [notice, setNotice] = useState("");
@@ -42,11 +45,12 @@ export default function Contact() {
         <div className="contact-copy">
           <p className="eyebrow">Contact the Chambers</p>
           <h2 className="section-title">Begin a conversation.</h2>
-          <p>For a legitimate enquiry, use the form or replace the placeholders below with verified chambers contact details.</p>
+          <p>For a legitimate enquiry, use the form or contact the chambers directly using the details below.</p>
           <div className="contact-details">
-            <p><span>Telephone</span>Details to be supplied</p>
-            <p><span>Email</span>Professional email to be supplied</p>
-            <p><span>Offices</span>Delhi · Meghalaya</p>
+            <p><span>Telephone</span><a href={phoneHref}>{contact.phone}</a></p>
+            <p><span>Email</span><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+            <div className="contact-location-row"><span>Locations</span><ul>{contact.locations.map((location) => <li key={location}>{location}</li>)}</ul></div>
+            <p><span>WhatsApp</span><a href={whatsappHref} target="_blank" rel="noopener noreferrer">Message the chambers</a></p>
           </div>
           <p className="contact-notice">Please do not send confidential or time-sensitive legal information through this unverified form.</p>
         </div>

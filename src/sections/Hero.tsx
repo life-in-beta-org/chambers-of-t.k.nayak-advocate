@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, PointerEvent } from "react";
-import justica from "../assets/justica.png";
+import justica from "../assets/justica-2.png";
 import { heroPracticeAreas } from "../data/heroPracticeAreas";
 
 export default function Hero() {
@@ -97,7 +97,7 @@ export default function Hero() {
   return (
     <section ref={heroRef} id="home" className="hero-section">
       <div className="hero-grid container-site">
-        <div className="hero-bottom-word mb-25" aria-hidden="true">ADVOCATE</div>
+        {/* <div className="hero-bottom-word mb-25" aria-hidden="true">CONSTITUTION</div> */}
 
         <div className="hero-copy">
           {/* <p className="hero-kicker">Chambers of T. K. Nayak</p> */}

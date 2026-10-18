@@ -4,6 +4,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: "/chambers-of-t.k.nayak-advocate/",
+  base: "/",
   plugins: [react(), tailwindcss()],
 });

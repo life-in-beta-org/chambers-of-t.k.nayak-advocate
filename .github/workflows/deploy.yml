@@ -1,0 +1,60 @@
+name: Deploy Vite React Website to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Vite application
+        run: npm run build
+
+      # App.tsx uses pathname-based routes. Generate an index.html at each
+      # route so GitHub Pages can serve direct visits and browser refreshes.
+      - name: Prepare client-side routes for GitHub Pages
+        run: |
+          mkdir -p dist/practice-areas dist/legal-updates dist/media
+          cp dist/index.html dist/practice-areas/index.html
+          cp dist/index.html dist/legal-updates/index.html
+          cp dist/index.html dist/media/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

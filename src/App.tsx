@@ -8,6 +8,11 @@ import PracticeAreas from "./sections/PracticeAreas";
 import PracticeAreasPage from "./pages/PracticeAreasPage";
 import LegalUpdatesPage from "./pages/LegalUpdatesPage";
 import MediaPage from "./pages/MediaPage";
+import AboutPage from "./pages/AboutPage";
+import PeoplePage from "./pages/PeoplePage";
+import AchievementsPage from "./pages/AchievementsPage";
+import OfficesPage from "./pages/OfficesPage";
+import ContactPage from "./pages/ContactPage";
 import DisclaimerGate from "./components/DisclaimerGate";
 import { useEffect, useState } from "react";
 
@@ -29,17 +34,30 @@ export default function App() {
   useEffect(() => {
     const titles: Record<string, string> = {
       "/": "Chambers of T. K. Nayak — Advocate",
+      "/about": "About the Chambers — Chambers of T. K. Nayak",
+      "/people": "Our People & Advocates — Chambers of T. K. Nayak",
+      "/our-team": "Our People & Advocates — Chambers of T. K. Nayak",
       "/practice-areas": "Areas of Practice — Chambers of T. K. Nayak",
-      "/legal-updates": "Legal Updates — Chambers of T. K. Nayak",
+      "/achievements": "Achievements & Accolades — Chambers of T. K. Nayak",
+      "/awards": "Achievements & Accolades — Chambers of T. K. Nayak",
       "/media": "In the Media — Chambers of T. K. Nayak",
+      "/offices": "Office Locations — Chambers of T. K. Nayak",
+      "/office": "Office Locations — Chambers of T. K. Nayak",
+      "/contact": "Contact — Chambers of T. K. Nayak",
+      "/legal-updates": "Legal Updates — Chambers of T. K. Nayak",
     };
     document.title = titles[pathname] ?? titles["/"];
   }, [pathname]);
 
   function renderRoute() {
+    if (pathname === "/about") return <SiteFrame><AboutPage /></SiteFrame>;
+    if (pathname === "/people" || pathname === "/our-team") return <SiteFrame><PeoplePage /></SiteFrame>;
     if (pathname === "/practice-areas") return <SiteFrame><PracticeAreasPage /></SiteFrame>;
-    if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
+    if (pathname === "/achievements" || pathname === "/awards") return <SiteFrame><AchievementsPage /></SiteFrame>;
     if (pathname === "/media") return <SiteFrame><MediaPage /></SiteFrame>;
+    if (pathname === "/offices" || pathname === "/office") return <SiteFrame><OfficesPage /></SiteFrame>;
+    if (pathname === "/contact") return <SiteFrame><ContactPage /></SiteFrame>;
+    if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
 
     return (
       <SiteFrame>

@@ -1,0 +1,276 @@
+/* ==========================================================================
+   MONITOR / DESKTOP SIDE NAVIGATION SLIDER
+   Inspired by reference design: Latham & Watkins full-height side panel
+   Tailored for Chambers of T. K. Nayak — Advocate
+   Scoped ONLY to monitor / desktop viewports (>= 1024px)
+   ========================================================================== */
+
+/* Completely hide on mobile/tablet - keep existing mobile nav for others */
+@media (max-width: 1023px) {
+  .monitor-side-nav-overlay,
+  .monitor-side-nav-drawer {
+    display: none !important;
+  }
+}
+
+/* Fullscreen Background Overlay on Desktop */
+.monitor-side-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background-color: rgba(9, 21, 37, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monitor-side-nav-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sliding Panel Drawer from the RIGHT */
+.monitor-side-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  width: clamp(380px, 28vw, 450px);
+  max-width: 90vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #ffffff;
+  box-shadow: -16px 0 45px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: #182333;
+}
+
+.monitor-side-nav-drawer.is-open {
+  transform: translateX(0);
+}
+
+/* Header Row inside Panel: [LOGO] [X] */
+.monitor-side-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 2.5rem 1.5rem;
+  flex-shrink: 0;
+}
+
+.monitor-side-nav-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #182333;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.monitor-side-nav-close-btn:hover {
+  color: #800020;
+  transform: scale(1.1);
+}
+
+.monitor-side-nav-close-btn:focus-visible {
+  outline: 2px solid #0b1f37;
+  outline-offset: 3px;
+}
+
+.monitor-side-nav-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.monitor-side-nav-logo {
+  height: 38px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+}
+
+/* Primary Navigation List (Reference: PEOPLE, CAPABILITIES, ACHIEVEMENTS, etc.) */
+.monitor-side-nav-primary {
+  padding: 1.25rem 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.monitor-nav-item {
+  position: relative;
+}
+
+.monitor-nav-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.monitor-nav-link {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #182333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.monitor-nav-link:hover {
+  color: #800020;
+}
+
+/* Red / Burgundy Accent Highlight for Featured or Active Item (Like 'PEOPLE' in reference) */
+.monitor-nav-link.is-featured,
+.monitor-nav-link.is-active {
+  color: #800020;
+}
+
+/* Expandable [+] Button */
+.monitor-nav-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #800020;
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.monitor-nav-expand-btn:hover {
+  color: #0b1f37;
+}
+
+.monitor-nav-expand-btn.is-expanded {
+  transform: rotate(45deg);
+}
+
+/* Submenu list when expanded */
+.monitor-nav-submenu {
+  list-style: none;
+  padding: 0.65rem 0 0.25rem 0.75rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-left: 1px solid #e7dfd1;
+  margin-left: 0.25rem;
+  margin-top: 0.5rem;
+  animation: monitorSubmenuFade 0.2s ease-out forwards;
+}
+
+@keyframes monitorSubmenuFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.monitor-nav-sublink {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.monitor-nav-sublink:hover {
+  color: #800020;
+}
+
+/* Horizontal Rule Divider (Reference: Solid black/charcoal line) */
+.monitor-side-nav-divider {
+  border: 0;
+  border-top: 1.5px solid #182333;
+  margin: 1rem 2.5rem 1.5rem;
+}
+
+/* Secondary Navigation Below Divider (OFFICE, CONTACT) */
+.monitor-side-nav-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 0 2.5rem 1.75rem;
+}
+
+.monitor-secondary-link {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #182333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.monitor-secondary-link:hover {
+  color: #800020;
+}
+
+.monitor-secondary-link.is-active {
+  color: #800020;
+}
+
+/* Social Media Icons Row (Reference: in, X, f, YouTube, Instagram) */
+.monitor-side-nav-socials {
+  margin-top: auto;
+  padding: 1.5rem 2.5rem 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.monitor-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #71717a;
+  background: transparent;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.monitor-social-btn:hover {
+  color: #182333;
+  transform: translateY(-1px);
+}
+
+.monitor-social-btn:focus-visible {
+  outline: 2px solid #0b1f37;
+  outline-offset: 3px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .monitor-side-nav-overlay,
+  .monitor-side-nav-drawer,
+  .monitor-nav-expand-btn {
+    transition: none !important;
+  }
+}

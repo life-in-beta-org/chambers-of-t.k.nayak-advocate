@@ -1,115 +1,152 @@
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/logo-black.png";
 import contact from "../../data/contact.json";
+import MonitorSideNav from "../navigation/MonitorSideNav";
+import { handleNavClick } from "../../utils/navigation";
 
 const navigation = [
-  { label: "ABOUT", href: "/#about" },
+  { label: "ABOUT", href: "/about" },
   { label: "PRACTICE AREAS", href: "/practice-areas" },
-  // { label: "Updates", href: "/legal-updates" },
   { label: "MEDIA", href: "/media" },
-  // { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [monitorNavOpen, setMonitorNavOpen] = useState(false);
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
   const whatsappHref = `https://wa.me/${contact.whatsappNumber}`;
 
-  function closeMenu() {
-    setMenuOpen(false);
+  function closeMobileMenu() {
+    setMobileMenuOpen(false);
   }
 
-  function handleNavigation(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
-    if (!href.startsWith("/") || href.includes("#")) return;
-    event.preventDefault();
-    window.history.pushState({}, "", href);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-    closeMenu();
+  function handleMobileNav(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    handleNavClick(event, href, closeMobileMenu);
   }
 
   return (
-    <header className="site-header sticky top-0 z-50">
-      <div className="container-site">
-        <div className="header-row flex min-h-20 items-center justify-between gap-6">
-          <a href="/#home" aria-label="Chambers of T. K. Nayak home">
-            <img className="site-logo" src={logo} alt="Chambers of T. K. Nayak" />
-          </a>
+    <>
+      <header className="site-header sticky top-0 z-50">
+        <div className="container-site">
+          <div className="header-row flex min-h-20 items-center justify-between gap-6">
+            {/* Logo */}
+            <a
+              href="/"
+              onClick={(e) => handleNavClick(e, "/")}
+              aria-label="Chambers of T. K. Nayak home"
+              className="flex-shrink-0"
+            >
+              <img className="site-logo" src={logo} alt="Chambers of T. K. Nayak" />
+            </a>
 
-          <nav
-            aria-label="Main navigation"
-            className="hidden items-center gap-8 md:flex"
-          >
-            {navigation.map((item) => (
+            {/* Desktop Navigation Links (Monitor view) */}
+            <nav
+              aria-label="Main navigation"
+              className="hidden items-center gap-8 md:flex"
+            >
+              {navigation.map((item) => {
+                const isActive = currentPath === item.href;
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(event) => handleNavClick(event, item.href)}
+                    className={`header-link text-xs font-semibold tracking-wider transition-colors ${
+                      isActive ? "text-[#0b1f37] font-bold" : ""
+                    }`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Desktop Action Group: Contact CTA & Monitor Side Nav Slider Trigger */}
+            <div className="hidden md:flex items-center gap-4">
               <a
-                key={item.href}
-                href={item.href}
-                onClick={(event) => handleNavigation(event, item.href)}
-                className="header-link text-sm transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <a
-            href="/#contact"
-            className="header-cta hidden px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors md:inline-flex"
-          >
-            Contact Us
-          </a>
-
-          <button
-            type="button"
-            className="header-menu inline-flex size-11 items-center justify-center md:hidden"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-
-        {menuOpen && (
-          <nav
-            id="mobile-navigation"
-            aria-label="Mobile navigation"
-            className="mobile-navigation border-t py-4 md:hidden"
-          >
-            {navigation.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(event) => { handleNavigation(event, item.href); closeMenu(); }}
-                className="header-link block py-3 text-sm"
-              >
-                {item.label}
-              </a>
-            ))}
-
-            <div className="mobile-contact-actions">
-              <a
-                href="/#contact"
-                onClick={closeMenu}
-                className="header-cta inline-flex px-5 py-3 text-xs font-semibold uppercase tracking-wider"
+                href="/contact"
+                onClick={(e) => handleNavClick(e, "/contact")}
+                className="header-cta px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors"
               >
                 Contact Us
               </a>
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-                className="header-whatsapp inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider"
+
+              {/* Monitor-only Side Nav Slider Button (3 lines) */}
+              <button
+                type="button"
+                className="inline-flex size-10 items-center justify-center text-[#0b1f37] hover:text-[#800020] transition-colors cursor-pointer"
+                aria-label="Open desktop side navigation panel"
+                aria-expanded={monitorNavOpen}
+                aria-controls="monitor-side-nav-drawer"
+                onClick={() => setMonitorNavOpen(true)}
               >
-                <WhatsAppIcon /> WhatsApp
-              </a>
+                <Menu size={24} strokeWidth={2} aria-hidden="true" />
+              </button>
             </div>
-          </nav>
-        )}
-      </div>
-    </header>
+
+            {/* Mobile / Tablet Menu Button (Existing mobile behavior) */}
+            <button
+              type="button"
+              className="header-menu inline-flex size-11 items-center justify-center md:hidden"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+
+          {/* Existing Mobile Navigation Dropdown (For mobile/tablet only) */}
+          {mobileMenuOpen && (
+            <nav
+              id="mobile-navigation"
+              aria-label="Mobile navigation"
+              className="mobile-navigation border-t py-4 md:hidden"
+            >
+              {navigation.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(event) => handleMobileNav(event, item.href)}
+                  className="header-link block py-3 text-sm"
+                >
+                  {item.label}
+                </a>
+              ))}
+
+              <div className="mobile-contact-actions">
+                <a
+                  href="/contact"
+                  onClick={closeMobileMenu}
+                  className="header-cta inline-flex px-5 py-3 text-xs font-semibold uppercase tracking-wider"
+                >
+                  Contact Us
+                </a>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobileMenu}
+                  className="header-whatsapp inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider"
+                >
+                  <WhatsAppIcon /> WhatsApp
+                </a>
+              </div>
+            </nav>
+          )}
+        </div>
+      </header>
+
+      {/* Monitor Side Nav Slider (Only renders / displays on monitor/desktop) */}
+      <MonitorSideNav
+        isOpen={monitorNavOpen}
+        onClose={() => setMonitorNavOpen(false)}
+        currentPath={currentPath}
+      />
+    </>
   );
 }
 

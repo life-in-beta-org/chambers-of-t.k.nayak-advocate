@@ -5,10 +5,10 @@ import logo from "../../assets/logo-black.png";
 import contact from "../../data/contact.json";
 
 const navigation = [
-  { label: "About", href: "/#about" },
-  { label: "Practice Areas", href: "/practice-areas" },
-  { label: "Updates", href: "/legal-updates" },
-  { label: "Media", href: "/media" },
+  { label: "ABOUT", href: "/#about" },
+  { label: "PRACTICE AREAS", href: "/practice-areas" },
+  // { label: "Updates", href: "/legal-updates" },
+  { label: "MEDIA", href: "/media" },
   // { label: "Contact", href: "/#contact" },
 ];
 
@@ -29,7 +29,7 @@ export default function Header() {
   }
 
   return (
-    <header className="site-header relative z-50">
+    <header className="site-header sticky top-0 z-50">
       <div className="container-site">
         <div className="header-row flex min-h-20 items-center justify-between gap-6">
           <a href="/#home" aria-label="Chambers of T. K. Nayak home">
@@ -56,7 +56,7 @@ export default function Header() {
             href="/#contact"
             className="header-cta hidden px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors md:inline-flex"
           >
-            Contact Chambers
+            Contact Us
           </a>
 
           <button
@@ -94,7 +94,7 @@ export default function Header() {
                 onClick={closeMenu}
                 className="header-cta inline-flex px-5 py-3 text-xs font-semibold uppercase tracking-wider"
               >
-                Contact Chambers
+                Contact Us
               </a>
               <a
                 href={whatsappHref}

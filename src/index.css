@@ -26,8 +26,8 @@
   --color-line-dark: #33445a;
 
   /* Typography */
-  --font-display: "Cormorant Garamond", "Bodoni Moda", "Didot", Georgia, serif;
-  --font-body: "Inter", Arial, sans-serif;
+  --font-display: "IBM Plex Sans", "Cormorant Garamond", "Bodoni Moda", "Didot", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Inter", Arial, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, monospace;
 
   /* Layout */

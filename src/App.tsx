@@ -8,6 +8,7 @@ import PracticeAreas from "./sections/PracticeAreas";
 import PracticeAreasPage from "./pages/PracticeAreasPage";
 import LegalUpdatesPage from "./pages/LegalUpdatesPage";
 import MediaPage from "./pages/MediaPage";
+import DisclaimerGate from "./components/DisclaimerGate";
 import { useEffect, useState } from "react";
 
 function usePathname() {
@@ -35,21 +36,29 @@ export default function App() {
     document.title = titles[pathname] ?? titles["/"];
   }, [pathname]);
 
-  if (pathname === "/practice-areas") return <SiteFrame><PracticeAreasPage /></SiteFrame>;
-  if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
-  if (pathname === "/media") return <SiteFrame><MediaPage /></SiteFrame>;
+  function renderRoute() {
+    if (pathname === "/practice-areas") return <SiteFrame><PracticeAreasPage /></SiteFrame>;
+    if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
+    if (pathname === "/media") return <SiteFrame><MediaPage /></SiteFrame>;
+
+    return (
+      <SiteFrame>
+        <Hero />
+        <About />
+        <PracticeAreas />
+        {/* <Team /> */}
+        {/* <Updates /> */}
+        <Media />
+        {/* <Offices /> */}
+        <Contact />
+      </SiteFrame>
+    );
+  }
 
   return (
-    <SiteFrame>
-      <Hero />
-      <About />
-      <PracticeAreas />
-      {/* <Team /> */}
-      {/* <Updates /> */}
-      <Media />
-      {/* <Offices /> */}
-      <Contact />
-    </SiteFrame>
+    <DisclaimerGate>
+      {renderRoute()}
+    </DisclaimerGate>
   );
 }
 

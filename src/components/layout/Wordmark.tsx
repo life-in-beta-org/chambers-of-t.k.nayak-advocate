@@ -9,6 +9,7 @@ export default function Wordmark({
   compact = false,
 }: WordmarkProps) {
   const textColor = light ? "text-ivory" : "text-navy";
+  const markColor = light ? "border-ivory text-ivory" : "border-gold text-gold";
 
   return (
     <a
@@ -19,7 +20,7 @@ export default function Wordmark({
       <span
         className={[
           "flex shrink-0 items-center justify-center",
-          "border border-gold font-display text-gold",
+          `border font-display ${markColor}`,
           compact ? "size-10 text-lg" : "size-12 text-xl",
         ].join(" ")}
         aria-hidden="true"

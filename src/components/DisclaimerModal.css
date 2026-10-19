@@ -1,0 +1,389 @@
+/* ==========================================================================
+   DISCLAIMER & CONFIRMATION ACCESS GATE STYLING
+   Inspired by Vaish Associates Advocates reference design
+   Tailored for Chambers of T. K. Nayak — Advocate
+   ========================================================================== */
+
+/* Fullscreen Backdrop Gate */
+.disclaimer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(9, 21, 37, 0.84);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 1.25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: disclaimerFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes disclaimerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Centered Panel (Reference: large light panel over dark background) */
+.disclaimer-panel {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  background: #faf8f3;
+  border: 1px solid #dfd8cb;
+  border-radius: 4px;
+  box-shadow: 
+    0 24px 60px -15px rgba(11, 31, 55, 0.45),
+    0 4px 18px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  padding: 2.5rem 2.75rem 2.25rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  animation: disclaimerScaleIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes disclaimerScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Header Section */
+.disclaimer-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.disclaimer-logo-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.disclaimer-logo {
+  height: 48px;
+  width: auto;
+  max-width: 220px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.disclaimer-title {
+  font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  color: var(--color-navy, #0b1f37);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.85rem;
+  line-height: 1.25;
+}
+
+.disclaimer-divider {
+  display: block;
+  width: 72px;
+  height: 2px;
+  background: var(--color-burgundy, #800020);
+  margin: 0 auto;
+  border-radius: 1px;
+}
+
+/* Content Body */
+.disclaimer-content {
+  color: #2b394a;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+  max-height: 52vh;
+  overflow-y: auto;
+  padding-right: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Custom Refined Scrollbar */
+.disclaimer-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.disclaimer-content::-webkit-scrollbar-track {
+  background: #ede8dc;
+  border-radius: 3px;
+}
+
+.disclaimer-content::-webkit-scrollbar-thumb {
+  background: #b8ad9c;
+  border-radius: 3px;
+}
+
+.disclaimer-content::-webkit-scrollbar-thumb:hover {
+  background: #908472;
+}
+
+.disclaimer-paragraph {
+  margin: 0 0 0.95rem;
+  text-align: justify;
+}
+
+.disclaimer-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Acknowledgements List */
+.disclaimer-list {
+  margin: 0 0 1rem 0;
+  padding-left: 1.35rem;
+  list-style-type: disc;
+}
+
+.disclaimer-list-item {
+  margin-bottom: 0.65rem;
+  padding-left: 0.25rem;
+  text-align: justify;
+}
+
+.disclaimer-list-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Action Buttons (Reference: I AGREE / I DISAGREE) */
+.disclaimer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e7e2d6;
+}
+
+.disclaimer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 2.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  min-width: 160px;
+}
+
+/* "I AGREE" Button - Prominent Navy */
+.disclaimer-btn-agree {
+  background-color: var(--color-navy, #0b1f37);
+  color: #ffffff;
+  border: 1px solid var(--color-navy, #0b1f37);
+  box-shadow: 0 2px 8px rgba(11, 31, 55, 0.18);
+}
+
+.disclaimer-btn-agree:hover {
+  background-color: var(--color-navy-light, #142d49);
+  border-color: var(--color-navy-light, #142d49);
+  box-shadow: 0 4px 14px rgba(11, 31, 55, 0.32);
+  transform: translateY(-1px);
+}
+
+.disclaimer-btn-agree:active {
+  transform: translateY(0);
+}
+
+.disclaimer-btn-agree:focus-visible {
+  outline: 2px solid var(--color-navy, #0b1f37);
+  outline-offset: 3px;
+}
+
+/* "I DISAGREE" Button - Refined Burgundy / Neutral outline */
+.disclaimer-btn-disagree {
+  background-color: transparent;
+  color: var(--color-burgundy, #800020);
+  border: 1px solid var(--color-burgundy, #800020);
+}
+
+.disclaimer-btn-disagree:hover {
+  background-color: var(--color-burgundy, #800020);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(128, 0, 32, 0.22);
+  transform: translateY(-1px);
+}
+
+.disclaimer-btn-disagree:active {
+  transform: translateY(0);
+}
+
+.disclaimer-btn-disagree:focus-visible {
+  outline: 2px solid var(--color-burgundy, #800020);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   ACCESS DENIED / RESTRICTED SCREEN
+   Displayed when visitor clicks "I DISAGREE"
+   Website remains completely unmounted / hidden
+   ========================================================================== */
+
+.access-denied-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 20%, #132742 0%, #091525 100%);
+  padding: 1.5rem;
+  overflow-y: auto;
+  animation: disclaimerFadeIn 0.3s ease-out forwards;
+}
+
+.access-denied-card {
+  width: 100%;
+  max-width: 620px;
+  background: #faf8f3;
+  border: 1px solid #dfd8cb;
+  border-radius: 4px;
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  padding: 2.75rem 2.5rem;
+  text-align: center;
+  margin: auto;
+  animation: disclaimerScaleIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.access-denied-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #f5ebe6;
+  border: 1px solid #e7cfc6;
+  color: var(--color-burgundy, #800020);
+  margin-bottom: 1.25rem;
+}
+
+.access-denied-title {
+  font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 600;
+  color: var(--color-navy, #0b1f37);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.access-denied-subtitle {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-burgundy, #800020);
+  margin: 0 0 1rem;
+}
+
+.access-denied-text {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #3e4c5b;
+  margin: 0 0 1.75rem;
+  text-align: center;
+}
+
+.access-denied-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.access-denied-btn-return {
+  width: 100%;
+  max-width: 320px;
+}
+
+.access-denied-btn-leave {
+  width: 100%;
+  max-width: 320px;
+  border-color: #c5bcae;
+  color: #556271;
+}
+
+.access-denied-btn-leave:hover {
+  background-color: #ece6da;
+  color: #1a2533;
+}
+
+/* ==========================================================================
+   BACKGROUND CONTENT CONTROL
+   Inert & Dimmed when Disclaimer is pending
+   ========================================================================== */
+
+.disclaimer-inert-background {
+  filter: blur(2px) brightness(0.6);
+  pointer-events: none !important;
+  user-select: none !important;
+  transition: filter 0.3s ease;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .disclaimer-backdrop {
+    padding: 0.75rem;
+  }
+
+  .disclaimer-panel {
+    padding: 1.75rem 1.25rem 1.5rem;
+  }
+
+  .disclaimer-title {
+    font-size: 1.2rem;
+    letter-spacing: 0.14em;
+  }
+
+  .disclaimer-content {
+    font-size: 0.825rem;
+    line-height: 1.68;
+    max-height: 48vh;
+    padding-right: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .disclaimer-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .disclaimer-btn {
+    width: 100%;
+    min-width: unset;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .access-denied-card {
+    padding: 2rem 1.25rem;
+  }
+}

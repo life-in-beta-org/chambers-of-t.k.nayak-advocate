@@ -50,7 +50,7 @@ export default function Contact() {
             <p><span>Telephone</span><a href={phoneHref}>{contact.phone}</a></p>
             <p><span>Email</span><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
             <div className="contact-location-row"><span>Locations</span><ul>{contact.locations.map((location) => <li key={location}>{location}</li>)}</ul></div>
-            <p><span>WhatsApp</span><a href={whatsappHref} target="_blank" rel="noopener noreferrer">Message the chambers</a></p>
+            <p><span>WhatsApp</span><a href={whatsappHref} target="_blank" rel="noopener noreferrer">Message TK Nayak</a></p>
           </div>
           <p className="contact-notice">Please do not send confidential or time-sensitive legal information through this unverified form.</p>
         </div>

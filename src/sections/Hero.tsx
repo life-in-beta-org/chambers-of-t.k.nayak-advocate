@@ -1,7 +1,6 @@
-import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, PointerEvent } from "react";
-import justica from "../assets/justica-2.png";
+import justica from "../assets/justica-3.png";
 import { heroPracticeAreas } from "../data/heroPracticeAreas";
 
 export default function Hero() {
@@ -117,7 +116,7 @@ export default function Hero() {
             {activeTag}
           </p>
           <p className="hero-description">
-                At Chambers, we transform legal complexities into strategic
+                We transform legal complexities into strategic
                 opportunities. Our seasoned team delivers exceptional,
                 personalized legal services to protect and empower you.
               </p>
@@ -164,11 +163,11 @@ export default function Hero() {
               </div>
               <div id="hero-practice-panel" className="hero-practice-panel" role="tabpanel" aria-live="polite" aria-labelledby={`hero-tab-${activeArea.id}`}>
                 <div key={activeArea.id} className="hero-panel-content">
-                  <p className="service-intro"><span aria-hidden="true">-&gt;</span> {activeArea.title}</p>
+                  <p className="service-intro">{activeArea.title}</p>
                   <p className="service-detail">{activeArea.description}</p>
                   <ul>
                     {activeArea.services.map((service) => (
-                      <li key={service}><ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />{service}</li>
+                      <li key={service}>{service}</li>
                     ))}
                   </ul>
                 </div>

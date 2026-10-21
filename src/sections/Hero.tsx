@@ -101,10 +101,11 @@ export default function Hero() {
         <div className="hero-copy">
           {/* <p className="hero-kicker">Chambers of T. K. Nayak</p> */}
           <h1>
-            <span className="hero-line">
-              Your Legal <span className="hero-highlight">Partners</span> in
+            <span className="hero-line text-8xl">
+              ROOTED IN  <span className="hero-highlight">LAW</span>
             </span>
-            <span className="hero-line">Every Situation</span>
+            <span className="hero-line">DRIVEN BY PRINCIPLE</span>
+
           </h1>
           <p
             key={activeTag}
@@ -116,22 +117,24 @@ export default function Hero() {
             {activeTag}
           </p>
           <p className="hero-description">
-                We transform legal complexities into strategic
-                opportunities. Our seasoned team delivers exceptional,
-                personalized legal services to protect and empower you.
-              </p>
-              <div className="hero-actions">
+               The chambers handle litigation and advisory work in 
+               service, criminal, constitutional, civil, family, 
+               corporate and intellectual property law, appearing 
+               before the Supreme Court of India, High Courts across 
+               the country, and the district courts.
+          </p>
+              {/* <div className="hero-actions">
                 <a className="hero-button" href="#contact">Consult Now</a>
                 <a className="hero-text-link" href="#practice-areas">Explore <span aria-hidden="true">-&gt;</span></a>
-              </div>
-            </div>
+              </div> */}
+        </div>
 
-            <div className="hero-figure pt-16" aria-hidden="true">
+            {/* <div className="hero-figure pt-16" aria-hidden="true">
               <img src={justica} alt="" />
-            </div>
+            </div> */}
 
             <aside className="hero-services" aria-label="Practice areas">
-              <div
+              {/* <div
                 className="service-icons"
                 role="tablist"
                 aria-label="Practice area categories"
@@ -160,7 +163,7 @@ export default function Hero() {
                     </button>
                   );
                 })}
-              </div>
+              </div> */}
               <div id="hero-practice-panel" className="hero-practice-panel" role="tabpanel" aria-live="polite" aria-labelledby={`hero-tab-${activeArea.id}`}>
                 <div key={activeArea.id} className="hero-panel-content">
                   <p className="service-intro">{activeArea.title}</p>

@@ -13,6 +13,8 @@ import PeoplePage from "./pages/PeoplePage";
 import AchievementsPage from "./pages/AchievementsPage";
 import OfficesPage from "./pages/OfficesPage";
 import ContactPage from "./pages/ContactPage";
+import DisclaimerPage from "./pages/DisclaimerPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import DisclaimerGate from "./components/DisclaimerGate";
 import { useEffect, useState } from "react";
 
@@ -44,6 +46,9 @@ export default function App() {
       "/offices": "Office Locations — Chambers of T. K. Nayak",
       "/office": "Office Locations — Chambers of T. K. Nayak",
       "/contact": "Contact — Chambers of T. K. Nayak",
+      "/disclaimer": "Disclaimer & Confirmation — Chambers of T. K. Nayak",
+      "/privacy-policy": "Privacy Policy — Chambers of T. K. Nayak",
+      "/policy": "Privacy Policy — Chambers of T. K. Nayak",
       "/legal-updates": "Legal Updates — Chambers of T. K. Nayak",
     };
     document.title = titles[pathname] ?? titles["/"];
@@ -57,6 +62,8 @@ export default function App() {
     if (pathname === "/media") return <SiteFrame><MediaPage /></SiteFrame>;
     if (pathname === "/offices" || pathname === "/office") return <SiteFrame><OfficesPage /></SiteFrame>;
     if (pathname === "/contact") return <SiteFrame><ContactPage /></SiteFrame>;
+    if (pathname === "/disclaimer") return <SiteFrame><DisclaimerPage /></SiteFrame>;
+    if (pathname === "/privacy-policy" || pathname === "/policy") return <SiteFrame><PrivacyPolicyPage /></SiteFrame>;
     if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
 
     return (

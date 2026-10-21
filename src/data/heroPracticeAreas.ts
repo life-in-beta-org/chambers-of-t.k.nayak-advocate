@@ -1,4 +1,4 @@
-import { FileText, Landmark, Scale, Users } from "lucide-react";
+import { Award, Briefcase, Building2, Scale, ShieldAlert, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface HeroPracticeArea {
@@ -12,35 +12,51 @@ export interface HeroPracticeArea {
 
 export const heroPracticeAreas: HeroPracticeArea[] = [
   {
-    id: "corporate-commercial",
-    label: "Corporate & Commercial Law",
-    title: "Corporate & Commercial Law",
-    description: "Placeholder guidance for businesses navigating commercial relationships and legal obligations.",
-    services: ["Business & Commercial Law", "Contracts & Agreements", "Corporate Disputes"],
+    id: "service-law",
+    label: "Service Law",
+    title: "Service Law",
+    description: "Advisory and litigation support for public sector employees, government servants, and statutory bodies.",
+    services: ["Administrative Tribunals (CAT & SAT)", "Service Conditions & Promotions", "Disciplinary Enquiries & Appeals"],
+    icon: Briefcase,
+  },
+  {
+    id: "criminal-law",
+    label: "Criminal Law",
+    title: "Criminal Law",
+    description: "Rigorous trial defence, appellate advocacy, and protection of individual liberty across all criminal courts.",
+    services: ["Trial Defence & Sessions Practice", "Bail & Quashing Proceedings", "White-Collar & Economic Offences"],
+    icon: ShieldAlert,
+  },
+  {
+    id: "civil-law",
+    label: "Civil Law",
+    title: "Civil Law",
+    description: "Comprehensive civil litigation, title disputes, contractual enforcement, and appellate remedies.",
+    services: ["Property & Real Estate Disputes", "Contractual Breach & Recovery", "Injunctions & Judicial Remedies"],
     icon: Scale,
   },
   {
-    id: "litigation-dispute-resolution",
-    label: "Litigation & Dispute Resolution",
-    title: "Litigation & Dispute Resolution",
-    description: "Placeholder guidance for disputes, proceedings and carefully considered legal representation.",
-    services: ["Civil Litigation", "Constitutional Matters", "Appeals & Proceedings"],
-    icon: FileText,
-  },
-  {
-    id: "family-personal-law",
-    label: "Family & Personal Law",
-    title: "Family & Personal Law",
-    description: "Placeholder guidance for personal legal matters requiring clarity, care and discretion.",
-    services: ["Family Law Consultation", "Matrimonial Disputes", "Personal Legal Matters"],
+    id: "family-law",
+    label: "Family Law",
+    title: "Family Law",
+    description: "Confidential, empathetic, and pragmatic counsel to resolve domestic and matrimonial matters.",
+    services: ["Matrimonial & Divorce Proceedings", "Child Custody & Guardianship", "Estate Succession & Family Settlements"],
     icon: Users,
   },
   {
-    id: "criminal-regulatory-law",
-    label: "Criminal & Regulatory Law",
-    title: "Criminal & Regulatory Law",
-    description: "Placeholder guidance for criminal defence and regulatory proceedings pending verification.",
-    services: ["Criminal Defence", "Bail Applications", "Regulatory Proceedings"],
-    icon: Landmark,
+    id: "corporate-commercial-law",
+    label: "Corporate & Commercial Law",
+    title: "Corporate & Commercial Law",
+    description: "Strategic commercial contracting, governance, restructuring, and high-stakes dispute resolution.",
+    services: ["Commercial Contracting & Alliances", "Corporate Governance & Compliance", "Restructuring & NCLT Matters"],
+    icon: Building2,
+  },
+  {
+    id: "intellectual-property-rights",
+    label: "Intellectual Property Rights",
+    title: "Intellectual Property Rights",
+    description: "Prosecution, commercialisation, and enforcement of trademarks, copyrights, patents, and trade secrets.",
+    services: ["Trademark & Copyright Protection", "IP Litigation & Infringement", "Trade Secrets & Commercial Licensing"],
+    icon: Award,
   },
 ];

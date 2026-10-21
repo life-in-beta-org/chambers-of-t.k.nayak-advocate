@@ -266,7 +266,7 @@ export default function MonitorSideNav({
         {/* Solid Horizontal Rule Divider */}
         <hr className="monitor-side-nav-divider" />
 
-        {/* Secondary Navigation Below Divider: Office, Contact */}
+        {/* Secondary Navigation Below Divider: Office, Contact, Disclaimer, Privacy Policy */}
         <div className="monitor-side-nav-secondary">
           <a
             href="/offices"
@@ -285,6 +285,24 @@ export default function MonitorSideNav({
             }`}
           >
             CONTACT
+          </a>
+          <a
+            href="/disclaimer"
+            onClick={(e) => handleNavClick(e, "/disclaimer", onClose)}
+            className={`monitor-secondary-link ${
+              currentPath === "/disclaimer" ? "is-active" : ""
+            }`}
+          >
+            DISCLAIMER
+          </a>
+          <a
+            href="/privacy-policy"
+            onClick={(e) => handleNavClick(e, "/privacy-policy", onClose)}
+            className={`monitor-secondary-link ${
+              currentPath === "/privacy-policy" || currentPath === "/policy" ? "is-active" : ""
+            }`}
+          >
+            PRIVACY POLICY
           </a>
         </div>
 

@@ -399,7 +399,7 @@
 .media-filters input:focus, .media-filters select:focus { border-color: var(--text-heading); outline: 2px solid var(--text-heading); outline-offset: 2px; }
 .section-heading-row { display: flex; justify-content: space-between; align-items: end; gap: 3rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); }
 .about-layout, .team-layout, .contact-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(3rem, 9vw, 10rem); }
-.about-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); }
+.about-layout { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); }
 .about-section .section-title { max-width: 22ch; }
 .about-copy { padding-top: 4rem; }
 .lead-copy { max-width: 38rem; color: var(--text-heading); font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 2.35rem); line-height: 1.3; }

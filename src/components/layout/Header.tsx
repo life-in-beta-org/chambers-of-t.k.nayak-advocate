@@ -5,10 +5,22 @@ import contact from "../../data/contact.json";
 import MonitorSideNav from "../navigation/MonitorSideNav";
 import { handleNavClick } from "../../utils/navigation";
 
-const navigation = [
+const desktopNavigation = [
   { label: "ABOUT", href: "/about" },
   { label: "PRACTICE AREAS", href: "/practice-areas" },
   { label: "MEDIA", href: "/media" },
+];
+
+const mobileNavigation = [
+  { label: "ABOUT", href: "/about" },
+  { label: "PEOPLE", href: "/people" },
+  { label: "PRACTICE AREAS", href: "/practice-areas" },
+  { label: "ACHIEVEMENTS", href: "/achievements" },
+  { label: "MEDIA", href: "/media" },
+  { label: "OFFICE", href: "/offices" },
+  { label: "CONTACT", href: "/contact" },
+  { label: "DISCLAIMER", href: "/disclaimer" },
+  { label: "PRIVACY POLICY", href: "/privacy-policy" },
 ];
 
 export default function Header() {
@@ -45,7 +57,7 @@ export default function Header() {
               aria-label="Main navigation"
               className="hidden items-center gap-8 md:flex"
             >
-              {navigation.map((item) => {
+              {desktopNavigation.map((item) => {
                 const isActive = currentPath === item.href;
                 return (
                   <a
@@ -99,25 +111,33 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Existing Mobile Navigation Dropdown (For mobile/tablet only) */}
+          {/* Mobile / Tablet Navigation Dropdown with all new tags */}
           {mobileMenuOpen && (
             <nav
               id="mobile-navigation"
               aria-label="Mobile navigation"
-              className="mobile-navigation border-t py-4 md:hidden"
+              className="mobile-navigation border-t py-4 md:hidden max-h-[calc(100vh-5rem)] overflow-y-auto"
             >
-              {navigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(event) => handleMobileNav(event, item.href)}
-                  className="header-link block py-3 text-sm"
-                >
-                  {item.label}
-                </a>
-              ))}
+              <div className="flex flex-col">
+                {mobileNavigation.map((item) => {
+                  const isActive = currentPath === item.href;
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={(event) => handleMobileNav(event, item.href)}
+                      className={`header-link block py-2 text-xs font-semibold tracking-wider uppercase transition-colors ${
+                        isActive ? "text-[#800020] font-bold" : ""
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
 
-              <div className="mobile-contact-actions">
+              <div className="mobile-contact-actions mt-4 pt-3 border-t border-[#e7dfd1]">
                 <a
                   href="/contact"
                   onClick={closeMobileMenu}

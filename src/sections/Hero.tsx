@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import type { KeyboardEvent, PointerEvent } from "react";
-import justica from "../assets/justica-3.png";
+// import GhostFibers from "../components/GhostFibers";
 import { heroPracticeAreas } from "../data/heroPracticeAreas";
 
 export default function Hero() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [previewIndex, setPreviewIndex] = useState<number | null>(null);
   const [tabsPaused, setTabsPaused] = useState(false);
   const [tagIndex, setTagIndex] = useState(0);
   const [tagPaused, setTagPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const heroRef = useRef<HTMLElement>(null);
-  const displayedIndex = previewIndex ?? selectedIndex;
-  const activeArea = heroPracticeAreas[displayedIndex];
+  const activeArea = heroPracticeAreas[selectedIndex];
   const activeTag = activeArea.services[tagIndex % activeArea.services.length];
 
   useEffect(() => {
@@ -26,7 +23,6 @@ export default function Hero() {
     if (tabsPaused || reducedMotion) return;
     const interval = window.setInterval(() => {
       setSelectedIndex((currentIndex) => (currentIndex + 1) % heroPracticeAreas.length);
-      setPreviewIndex(null);
     }, 3500);
     return () => window.clearInterval(interval);
   }, [reducedMotion, tabsPaused]);
@@ -62,50 +58,61 @@ export default function Hero() {
     };
   }, [reducedMotion]);
 
-  function selectArea(index: number) {
-    setSelectedIndex(index);
-    setPreviewIndex(index);
-  }
-
-  function moveTab(index: number) {
-    const nextIndex = (index + heroPracticeAreas.length) % heroPracticeAreas.length;
-    setSelectedIndex(nextIndex);
-    setPreviewIndex(nextIndex);
-    document.getElementById(`hero-tab-${heroPracticeAreas[nextIndex].id}`)?.focus();
-  }
-
-  function handleTabKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-      event.preventDefault();
-      moveTab(index + 1);
-    }
-    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-      event.preventDefault();
-      moveTab(index - 1);
-    }
-    if (event.key === "Home") {
-      event.preventDefault();
-      moveTab(0);
-    }
-    if (event.key === "End") {
-      event.preventDefault();
-      moveTab(heroPracticeAreas.length - 1);
-    }
-  }
-
   return (
     <section ref={heroRef} id="home" className="hero-section">
-      <div className="hero-grid container-site">
-        {/* <div className="hero-bottom-word mb-25" aria-hidden="true">CONSTITUTION</div> */}
+      {/* GhostFibers Hero Background */}
+      <div
+        className="hero-fibers-bg"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          overflow: "hidden",
+        }}
+        aria-hidden="true"
+      >
+        
+        {/* <GhostFibers
+          glowColor="#315D91"
+          lineColor="#24476D"
+          secondaryColor="#527BA6"
+          gradient="depth"
+          layers={1}
+          twist={1.5}
+          threads={72}
+          fiberStyle="dots"
+          speed={0.25}
+          rollSpeed={0.08}
+          volume={0.5}
+          spread={1.3}
+          density={1.2}
+          thickness={1.2}
+          depthOfField={0.25}
+          focusDepth={0}
+          foldGlow={0.8}
+          particles={0}
+          sparkle={0.15}
+          glow={0}
+          brightness={2}
+          vignette={0}
+          grain={0}
+          lightMode={true}
+          hoverEffect="none"
+          mouseInteraction={false}
+          intro={true}
+        /> */}
 
+      </div>
+
+      <div className="hero-grid container-site">
         <div className="hero-copy">
-          {/* <p className="hero-kicker">Chambers of T. K. Nayak</p> */}
           <h1>
             <span className="hero-line text-8xl">
-              ROOTED IN  <span className="hero-highlight">LAW</span>
+              ROOTED IN <span className="hero-highlight">LAW</span>
             </span>
             <span className="hero-line">DRIVEN BY PRINCIPLE</span>
-
           </h1>
           <p
             key={activeTag}
@@ -117,67 +124,39 @@ export default function Hero() {
             {activeTag}
           </p>
           <p className="hero-description">
-               The chambers handle litigation and advisory work in 
-               service, criminal, constitutional, civil, family, 
-               corporate and intellectual property law, appearing 
-               before the Supreme Court of India, High Courts across 
-               the country, and the district courts.
+            The chambers handle litigation and advisory work in 
+            service, criminal, constitutional, civil, family, 
+            corporate and intellectual property law, appearing 
+            before the Supreme Court of India, High Courts across 
+            the country, and the district courts.
           </p>
-              {/* <div className="hero-actions">
-                <a className="hero-button" href="#contact">Consult Now</a>
-                <a className="hero-text-link" href="#practice-areas">Explore <span aria-hidden="true">-&gt;</span></a>
-              </div> */}
         </div>
 
-            {/* <div className="hero-figure pt-16" aria-hidden="true">
-              <img src={justica} alt="" />
-            </div> */}
-
-            <aside className="hero-services" aria-label="Practice areas">
-              {/* <div
-                className="service-icons"
-                role="tablist"
-                aria-label="Practice area categories"
-                onPointerEnter={(event) => { if (event.pointerType === "mouse") setTabsPaused(true); }}
-                onPointerLeave={(event) => { if (event.pointerType === "mouse") { setTabsPaused(false); setPreviewIndex(null); } }}
-                onFocusCapture={() => setTabsPaused(true)}
-                onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setTabsPaused(false); }}
-              >
-                {heroPracticeAreas.map((area, index) => {
-                  const Icon = area.icon;
-                  return (
-                    <button
-                      key={area.id}
-                      id={`hero-tab-${area.id}`}
-                      type="button"
-                      role="tab"
-                      aria-selected={displayedIndex === index}
-                      aria-controls="hero-practice-panel"
-                      aria-label={area.label}
-                      className={`service-tab${displayedIndex === index ? " is-active" : ""}`}
-                      onClick={() => selectArea(index)}
-                      onPointerEnter={(event: PointerEvent<HTMLButtonElement>) => { if (event.pointerType === "mouse") setPreviewIndex(index); }}
-                      onKeyDown={(event) => handleTabKeyDown(event, index)}
-                    >
-                      <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
-                    </button>
-                  );
-                })}
-              </div> */}
-              <div id="hero-practice-panel" className="hero-practice-panel" role="tabpanel" aria-live="polite" aria-labelledby={`hero-tab-${activeArea.id}`}>
-                <div key={activeArea.id} className="hero-panel-content">
-                  <p className="service-intro">{activeArea.title}</p>
-                  <p className="service-detail">{activeArea.description}</p>
-                  <ul>
-                    {activeArea.services.map((service) => (
-                      <li key={service}>{service}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </aside>
-            
+        <aside
+          className="hero-services"
+          aria-label="Practice areas"
+          onMouseEnter={() => setTabsPaused(true)}
+          onMouseLeave={() => setTabsPaused(false)}
+        >
+          <div
+            id="hero-practice-panel"
+            className="hero-practice-panel"
+            role="tabpanel"
+            aria-live="polite"
+            aria-labelledby={`hero-tab-${activeArea.id}`}
+          >
+            <div key={activeArea.id} className="hero-panel-content">
+              <p className="service-intro">{activeArea.title}</p>
+              <p className="service-detail">{activeArea.description}</p>
+              <ul>
+                {activeArea.services.map((service) => (
+                  <li key={service}>{service}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </section>
-    );
+        </aside>
+      </div>
+    </section>
+  );
 }

@@ -12,11 +12,6 @@ export default function About() {
 					</p>
 					<div className="about-detail-grid">
 						<p>
-							This introductory text is a placeholder for the chambers&apos; approach, values and
-							areas of work. It can be replaced with verified information supplied by the
-							chambers.
-						</p>
-						<p>
 							The practice is shaped around understanding each enquiry in context and explaining
 							the available path with precision. Further details can be added as they are
 							confirmed.
@@ -24,10 +19,6 @@ export default function About() {
 					</div>
 				</div>
 			</div>
-			{/* <div className="container-site about-note">
-				<span className="about-mark" aria-hidden="true">TKN</span>
-				<p>Reserved visual space for a verified chambers, office or architectural image.</p>
-			</div> */}
 		</section>
 	);
 }

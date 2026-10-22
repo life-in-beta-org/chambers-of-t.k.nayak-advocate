@@ -6,12 +6,14 @@ import MonitorSideNav from "../navigation/MonitorSideNav";
 import { handleNavClick } from "../../utils/navigation";
 
 const desktopNavigation = [
+  { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
   { label: "PRACTICE AREAS", href: "/practice-areas" },
   { label: "IN THE MEDIA", href: "/media" },
 ];
 
 const mobileNavigation = [
+  { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
   { label: "PEOPLE", href: "/people" },
   { label: "PRACTICE AREAS", href: "/practice-areas" },
@@ -98,7 +100,7 @@ export default function Header() {
                 {/* Monitor-only Side Nav Slider Button (3 lines) */}
                 <button
                   type="button"
-                  className="inline-flex size-10 items-center justify-center text-[#0b1f37] hover:text-[#800020] transition-colors cursor-pointer"
+                  className="inline-flex size-10 items-center justify-center text-[#0b1f37] hover:text-[#163254] transition-colors cursor-pointer"
                   aria-label="Open desktop side navigation panel"
                   aria-expanded={monitorNavOpen}
                   aria-controls="monitor-side-nav-drawer"

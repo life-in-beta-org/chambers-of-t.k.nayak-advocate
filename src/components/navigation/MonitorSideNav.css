@@ -80,7 +80,7 @@
 }
 
 .monitor-side-nav-close-btn:hover {
-  color: #800020;
+  color: #0b1f37;
   transform: scale(1.1);
 }
 
@@ -132,13 +132,12 @@
 }
 
 .monitor-nav-link:hover {
-  color: #800020;
+  color: #0b1f37;
 }
 
-/* Red / Burgundy Accent Highlight for Featured or Active Item (Like 'PEOPLE' in reference) */
-.monitor-nav-link.is-featured,
+/* Navy Blue Accent Highlight for Active Item */
 .monitor-nav-link.is-active {
-  color: #800020;
+  color: #0b1f37;
 }
 
 /* Expandable [+] Button */
@@ -148,7 +147,7 @@
   justify-content: center;
   background: transparent;
   border: none;
-  color: #800020;
+  color: #0b1f37;
   font-size: 1.35rem;
   font-weight: 300;
   line-height: 1;
@@ -158,7 +157,7 @@
 }
 
 .monitor-nav-expand-btn:hover {
-  color: #0b1f37;
+  color: #163254;
 }
 
 .monitor-nav-expand-btn.is-expanded {
@@ -200,7 +199,7 @@
 }
 
 .monitor-nav-sublink:hover {
-  color: #800020;
+  color: #0b1f37;
 }
 
 /* Social Media Icons Row (Reference: in, X, f, YouTube, Instagram) */

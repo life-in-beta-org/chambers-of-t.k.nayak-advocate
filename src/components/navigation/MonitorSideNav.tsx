@@ -106,7 +106,22 @@ export default function MonitorSideNav({
 
         {/* Primary Navigation Items */}
         <nav className="monitor-side-nav-primary" aria-label="Main menu">
-          {/* 1. ABOUT */}
+          {/* 1. HOME */}
+          <div className="monitor-nav-item">
+            <div className="monitor-nav-item-row">
+              <a
+                href="/"
+                onClick={(e) => handleNavClick(e, "/", onClose)}
+                className={`monitor-nav-link ${
+                  currentPath === "/" ? "is-active" : ""
+                }`}
+              >
+                HOME
+              </a>
+            </div>
+          </div>
+
+          {/* 2. ABOUT */}
           <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
               <a
@@ -127,7 +142,7 @@ export default function MonitorSideNav({
               <a
                 href="/people"
                 onClick={(e) => handleNavClick(e, "/people", onClose)}
-                className={`monitor-nav-link is-featured ${
+                className={`monitor-nav-link ${
                   currentPath === "/people" || currentPath === "/our-team" ? "is-active" : ""
                 }`}
               >

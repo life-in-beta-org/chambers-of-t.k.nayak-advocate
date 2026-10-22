@@ -131,7 +131,6 @@ export default function Contact() {
     >
       <div className="container-site contact-layout">
         <div className="contact-copy">
-          <p className="eyebrow">Contact the Chambers</p>
           <h2 className="section-title">Begin a conversation.</h2>
           <p>
             For a legitimate enquiry, use the form or contact the
@@ -149,11 +148,7 @@ export default function Contact() {
             </p>
             <div className="contact-location-row">
               <span>Locations</span>
-              <ul>
-                {contact.locations.map((location) => (
-                  <li key={location}>{location}</li>
-                ))}
-              </ul>
+              <p>{contact.locations.join(" | ")}</p>
             </div>
             <p>
               <span>WhatsApp</span>
@@ -255,9 +250,13 @@ export default function Contact() {
               aria-invalid={Boolean(errors.subject)}
             >
               <option value="">Select an area</option>
-              <option>Corporate and Commercial Law</option>
-              <option>Civil Litigation and Dispute Resolution</option>
-              <option>Family Law</option>
+              <option>Service law</option>
+              <option>Criminal law</option>
+              <option>Constitutional law</option>
+              <option>Civil law and dispute resolution</option>
+              <option>Family and matrimonial law</option>
+              <option>Corporate and Commercial law</option>
+              <option>Intellectual Property Rights</option>
               <option>Other / to be confirmed</option>
             </select>
             {errors.subject && (
@@ -294,7 +293,7 @@ export default function Contact() {
               className="form-submit"
               disabled={isSending}
             >
-              {isSending ? "Sending..." : "Send enquiry"}
+              {isSending ? "Sending..." : "Submit"}
               {!isSending && (
                 <span aria-hidden="true"> -&gt;</span>
               )}

@@ -161,10 +161,8 @@ export default function Contact() {
               </a>
             </p>
           </div>
-
           <p className="contact-notice">
-            Please do not send confidential or time-sensitive legal
-            information through this unverified form.
+            Please do not send confidential or time-sensitive legal information through this form.
           </p>
         </div>
 

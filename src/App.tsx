@@ -61,7 +61,7 @@ export default function App() {
     if (pathname === "/achievements" || pathname === "/awards") return <SiteFrame><AchievementsPage /></SiteFrame>;
     if (pathname === "/media") return <SiteFrame><MediaPage /></SiteFrame>;
     if (pathname === "/offices" || pathname === "/office") return <SiteFrame><OfficesPage /></SiteFrame>;
-    if (pathname === "/contact") return <SiteFrame><ContactPage /></SiteFrame>;
+    if (pathname === "/contact") return <SiteFrame includeContact={false}><ContactPage /></SiteFrame>;
     if (pathname === "/disclaimer") return <SiteFrame><DisclaimerPage /></SiteFrame>;
     if (pathname === "/privacy-policy" || pathname === "/policy") return <SiteFrame><PrivacyPolicyPage /></SiteFrame>;
     if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
@@ -75,7 +75,6 @@ export default function App() {
         {/* <Updates /> */}
         <Media />
         {/* <Offices /> */}
-        <Contact />
       </SiteFrame>
     );
   }
@@ -87,6 +86,12 @@ export default function App() {
   );
 }
 
-function SiteFrame({ children }: { children: React.ReactNode }) {
-  return <><Header /><main>{children}</main><Footer /></>;
+function SiteFrame({
+  children,
+  includeContact = true,
+}: {
+  children: React.ReactNode;
+  includeContact?: boolean;
+}) {
+  return <><Header /><main>{children}{includeContact && <Contact />}</main><Footer /></>;
 }

@@ -6,14 +6,18 @@ export default function Team() {
 					<span>Portrait<br />placeholder</span>
 				</div>
 				<div className="team-copy">
-					<p className="eyebrow">Our Advocates</p>
-					<h2 className="section-title">A considered legal practice,<br />led with care.</h2>
-					<p className="lead-copy">Principal Advocate: [Name to be supplied]</p>
+					<p className="eyebrow">Our Advocate</p>
+					<p className="lead-copy">Tarini Kamakhya Nayak</p>
 					<p>
-						This profile is reserved for a verified biography, professional designation, areas of
-						practice and qualifications. No advocate details have been inferred or added here.
+						<strong className="team-profile-name">Advocate Tarini Kamakhya Nayak</strong> is a legal professional who has appeared before
+						the Supreme Court of India in significant matters involving constitutional and public interest
+						issues. He has been associated with cases concerning the rights and livelihoods of individuals,
+						including the representation of approximately 700 teachers from Tripura challenging their
+						termination of service. He has also been appointed as a Panel Advocate by the Government of
+						Meghalaya for matters before the Supreme Court, High Court at New Delhi, and other judicial and
+						quasi-judicial bodies. His professional engagements reflect his involvement in litigation and
+						matters of public importance.
 					</p>
-					<p className="placeholder-label">Professional details to be confirmed</p>
 				</div>
 			</div>
 		</section>

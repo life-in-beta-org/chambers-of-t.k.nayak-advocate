@@ -152,21 +152,7 @@ export default function MonitorSideNav({
           </div>
 
           {/* 4. ACHIEVEMENTS */}
-          <div className="monitor-nav-item">
-            <div className="monitor-nav-item-row">
-              <a
-                href="/achievements"
-                onClick={(e) => handleNavClick(e, "/achievements", onClose)}
-                className={`monitor-nav-link ${
-                  currentPath === "/achievements" || currentPath === "/awards" ? "is-active" : ""
-                }`}
-              >
-                ACHIEVEMENTS
-              </a>
-            </div>
-          </div>
-
-          {/* 5. MEDIA */}
+          {/* 4. MEDIA */}
           <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
               <a
@@ -181,7 +167,7 @@ export default function MonitorSideNav({
             </div>
           </div>
 
-          {/* 6. OFFICE */}
+          {/* 5. OFFICE */}
           <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
               <a
@@ -196,7 +182,7 @@ export default function MonitorSideNav({
             </div>
           </div>
 
-          {/* 7. CONTACT */}
+          {/* 6. CONTACT */}
           <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
               <a

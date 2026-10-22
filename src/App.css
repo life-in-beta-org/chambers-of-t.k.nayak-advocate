@@ -238,6 +238,8 @@
   color: #242424;
   font-size: 0.95rem;
   line-height: 1.65;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero-actions {

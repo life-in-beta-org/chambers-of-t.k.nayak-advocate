@@ -16,9 +16,11 @@ export default function About() {
 					</p>
 					<div className="about-detail-grid">
 						<p>
-							The practice is shaped around understanding each enquiry in context and explaining
-							the available path with precision. Further details can be added as they are
-							confirmed.
+							The practice encompasses service, criminal, constitutional, civil, family, corporate, and intellectual property law, amongst others. Each matter is approached with discipline, grounded in a thorough understanding of the facts, careful legal research, and clear communication with clients.
+						</p>
+						<p>
+							Our team believes that sound advocacy begins long before the courtroom. Every matter receives thoughtful preparation, meticulous attention to detail, and a commitment to building a strong legal strategy from the very beginning.
+
 						</p>
 					</div>
 				</div>

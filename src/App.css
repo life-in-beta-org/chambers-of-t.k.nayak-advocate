@@ -181,17 +181,35 @@
 }
 
 .hero-copy h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   color: #0b1f37;
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 5.6rem);
+  font-size: clamp(1.85rem, 5vw, 5.6rem);
   font-weight: 700;
   letter-spacing: -0.07em;
   line-height: 0.98;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .hero-copy h1 .hero-line {
-  display: block;
+  display: inline-block;
+  width: max-content;
   white-space: nowrap;
+}
+
+.hero-copy h1 .hero-line-top {
+  font-size: var(--hero-line1-scale, 1.38em);
+  font-weight: 580;
+  line-height: 0.95;
+}
+
+.hero-copy h1 .hero-line-bottom {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 0.98;
 }
 
 .hero-copy h1 .hero-highlight {
@@ -419,8 +437,8 @@
   .hero-section, .hero-grid { min-height: 0; }
   .hero-grid { display: flex; flex-direction: column; padding-top: 3rem; }
   .hero-copy { width: 100%; }
-  .hero-copy h1 { font-size: clamp(3rem, 15vw, 4.4rem); }
-  .hero-copy h1 .hero-line { white-space: normal; }
+  .hero-copy h1 { font-size: clamp(1.5rem, 7.5vw, 3.2rem); }
+  .hero-copy h1 .hero-line { white-space: nowrap; }
   .hero-bottom-word {
     right: auto;
     left: 50%;
@@ -511,8 +529,18 @@
 }
 .lead-copy { max-width: 52rem; width: 100%; color: var(--text-heading); font-family: var(--font-display); font-size: clamp(1.4rem, 2.2vw, 2.15rem); line-height: 1.35; }
 .about-copy .lead-copy { max-width: 100%; width: 100%; }
-.about-detail-grid { display: block; margin-top: 3.5rem; color: var(--text-muted); font-size: .95rem; line-height: 1.65; }
-.about-detail-grid p { width: 100%; max-width: 100%; }
+.about-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+  color: var(--text-muted);
+  font-size: .95rem;
+  line-height: 1.65;
+}
+.about-detail-grid p {
+  width: 100%;
+}
 .about-note { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center; margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: .75rem; }
 .about-mark { display: grid; width: 100%; min-height: 15rem; place-items: center; border: 1px solid #d8d1c4; color: #a69e90; font-family: var(--font-display); font-size: 2rem; letter-spacing: .12em; }
 .practice-list { border-bottom: 1px solid var(--border); }

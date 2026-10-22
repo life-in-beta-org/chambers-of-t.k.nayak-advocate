@@ -16,7 +16,7 @@ export default function Offices() {
 				<div className="section-heading-row">
 					<div>
 						<p className="eyebrow">Office Locations</p>
-						<h2 className="section-title">Places to begin a conversation.</h2>
+						<h2 className="section-title">Places to begin<br />a conversation.</h2>
 					</div>
 					<p className="section-intro">The location labels below were supplied for this page. Complete contact and address information remains to be confirmed.</p>
 				</div>

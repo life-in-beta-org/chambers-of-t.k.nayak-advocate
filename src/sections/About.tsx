@@ -3,13 +3,12 @@ export default function About() {
 		<section id="about" className="editorial-section about-section">
 			<div className="container-site about-layout">
 				<div>
-					<p className="eyebrow">About Our Firm</p>
-					<h2 className="section-title">Thoughtful Counsel. Principled Advocacy.</h2>
+					<p className="eyebrow">About Chambers</p>
+					<h2 className="section-title">THOUGHTFUL COUNSEL.<br />PRINCIPLED ADVOCACY</h2>
 				</div>
 				<div className="about-copy">
 					<p className="lead-copy">
-						Chambers of T. K. Nayak is presented here as a place for considered legal guidance,
-						careful preparation and clear communication.
+						Chambers of T. K. Nayak is a litigation and advisory practice based in New Delhi, with a significant presence in Tripura, Meghalaya and West Bengal. Our team appears before the Supreme Court of India, High Courts across the country, and the district courts.
 					</p>
 					<div className="about-detail-grid">
 						<p>

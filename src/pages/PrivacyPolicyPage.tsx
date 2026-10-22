@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="border border-[#e7dfd1] bg-[#ffffff] p-8 md:p-12 shadow-sm space-y-8">
           <div>
-            <h2 className="font-serif text-xl text-[#0b1f37] font-semibold mb-3">
+            <h2 className="text-xl text-[#0b1f37] font-semibold mb-3">
               1. Attorney-Client Privilege &amp; Professional Secrecy
             </h2>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed">
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div className="border-t border-[#e7dfd1] pt-6">
-            <h2 className="font-serif text-xl text-[#0b1f37] font-semibold mb-3">
+            <h2 className="text-xl text-[#0b1f37] font-semibold mb-3">
               2. Information Collected
             </h2>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3">
@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div className="border-t border-[#e7dfd1] pt-6">
-            <h2 className="font-serif text-xl text-[#0b1f37] font-semibold mb-3">
+            <h2 className="text-xl text-[#0b1f37] font-semibold mb-3">
               3. Use of Information
             </h2>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed">
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div className="border-t border-[#e7dfd1] pt-6">
-            <h2 className="font-serif text-xl text-[#0b1f37] font-semibold mb-3">
+            <h2 className="text-xl text-[#0b1f37] font-semibold mb-3">
               4. Governing Law &amp; Jurisdiction
             </h2>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed">

@@ -7,7 +7,7 @@ export default function Team() {
 				</div>
 				<div className="team-copy">
 					<p className="eyebrow">Our Advocates</p>
-					<h2 className="section-title">A considered legal practice, led with care.</h2>
+					<h2 className="section-title">A considered legal practice,<br />led with care.</h2>
 					<p className="lead-copy">Principal Advocate: [Name to be supplied]</p>
 					<p>
 						This profile is reserved for a verified biography, professional designation, areas of

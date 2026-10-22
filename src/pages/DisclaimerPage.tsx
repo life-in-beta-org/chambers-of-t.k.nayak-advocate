@@ -17,7 +17,7 @@ export default function DisclaimerPage() {
         </div>
 
         <div className="border border-[#e7dfd1] bg-[#ffffff] p-8 md:p-12 shadow-sm space-y-6">
-          <p className="font-serif text-lg text-[#0b1f37] font-semibold">
+          <p className="text-lg text-[#0b1f37] font-semibold">
             {intro}
           </p>
 
@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
           </ol>
 
           <div className="border-t border-[#e7dfd1] pt-6 space-y-4">
-            <h2 className="font-serif text-base text-[#800020] uppercase tracking-wider font-bold">
+            <h2 className="text-base text-[#800020] uppercase tracking-wider font-bold">
               Information Notice
             </h2>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed">
@@ -37,7 +37,7 @@ export default function DisclaimerPage() {
           </div>
 
           <div className="border-t border-[#e7dfd1] pt-6 space-y-4">
-            <h2 className="font-serif text-base text-[#800020] uppercase tracking-wider font-bold">
+            <h2 className="text-base text-[#800020] uppercase tracking-wider font-bold">
               Limitation of Liability &amp; Jurisdiction
             </h2>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed">

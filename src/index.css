@@ -26,8 +26,10 @@
   --color-line-dark: #33445a;
 
   /* Typography */
-  --font-display: "IBM Plex Sans", "Cormorant Garamond", "Bodoni Moda", "Didot", Georgia, serif;
-  --font-body: "IBM Plex Sans", "Inter", Arial, sans-serif;
+  --font-display: "Figtree", sans-serif;
+  --font-body: "Figtree", sans-serif;
+  --font-sans: "Figtree", sans-serif;
+  --font-serif: "Figtree", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, monospace;
 
   /* Layout */
@@ -45,6 +47,7 @@
 :root {
   color-scheme: light;
 
+  --color-burgundy: #800020;
   --bg: var(--color-ivory);
   --surface: var(--color-paper);
 
@@ -58,10 +61,15 @@
 
   --border: var(--color-line);
 
+  --font-display: "Figtree", sans-serif;
+  --font-body: "Figtree", sans-serif;
+  --font-sans: "Figtree", sans-serif;
+  --font-serif: "Figtree", sans-serif;
+
   --page-gutter: clamp(1.25rem, 5vw, 5rem);
   --section-space: clamp(4rem, 9vw, 8rem);
 
-  font-family: var(--font-body);
+  font-family: "Figtree", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.7;
@@ -84,18 +92,21 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 html {
   min-width: 320px;
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
+  font-family: "Figtree", sans-serif;
 }
 
 body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  font-family: "Figtree", sans-serif;
 }
 
 body,
@@ -103,7 +114,7 @@ button,
 input,
 textarea,
 select {
-  font-family: var(--font-body);
+  font-family: "Figtree", sans-serif;
 }
 
 button,
@@ -164,10 +175,10 @@ h5,
 h6 {
   margin: 0;
   color: var(--text-heading);
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: "Figtree", sans-serif;
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
   text-transform: none;
 }
 

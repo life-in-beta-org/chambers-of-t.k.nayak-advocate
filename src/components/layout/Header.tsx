@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/logo-black.png";
 import contact from "../../data/contact.json";
@@ -26,7 +26,18 @@ const mobileNavigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [monitorNavOpen, setMonitorNavOpen] = useState(false);
-  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
+  const [currentPath, setCurrentPath] = useState(
+    () => (typeof window !== "undefined" ? window.location.pathname : "/")
+  );
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   const whatsappHref = `https://wa.me/${contact.whatsappNumber}`;
 
   function closeMobileMenu() {
@@ -65,7 +76,7 @@ export default function Header() {
                     href={item.href}
                     onClick={(event) => handleNavClick(event, item.href)}
                     className={`header-link text-xs font-semibold tracking-wider transition-colors ${
-                      isActive ? "text-[#0b1f37] font-bold" : ""
+                      isActive ? "is-active font-bold" : ""
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -127,7 +138,7 @@ export default function Header() {
                       href={item.href}
                       onClick={(event) => handleMobileNav(event, item.href)}
                       className={`header-link block py-2 text-xs font-semibold tracking-wider uppercase transition-colors ${
-                        isActive ? "text-[#800020] font-bold" : ""
+                        isActive ? "is-active font-bold" : ""
                       }`}
                       aria-current={isActive ? "page" : undefined}
                     >

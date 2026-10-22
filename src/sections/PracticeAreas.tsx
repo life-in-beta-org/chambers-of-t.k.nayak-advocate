@@ -5,7 +5,7 @@ interface PracticeAreasProps {
 }
 
 export default function PracticeAreas({ page = false }: PracticeAreasProps) {
-	const visibleAreas = page ? practiceAreas : practiceAreas.slice(0, 6);
+	const visibleAreas = page ? practiceAreas : practiceAreas.slice(0, 7);
 
 	return (
 		<section id={page ? "practice-areas-page" : "practice-areas"} className="editorial-section practice-section section-wash">

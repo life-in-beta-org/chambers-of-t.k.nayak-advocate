@@ -1,4 +1,4 @@
-import { Award, Briefcase, Building2, Scale, ShieldAlert, Users } from "lucide-react";
+import { Award, Briefcase, Building2, Landmark, Scale, ShieldAlert, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface HeroPracticeArea {
@@ -28,17 +28,25 @@ export const heroPracticeAreas: HeroPracticeArea[] = [
     icon: ShieldAlert,
   },
   {
-    id: "civil-law",
-    label: "Civil Law",
-    title: "Civil Law",
+    id: "constitutional-law",
+    label: "Constitutional Law",
+    title: "Constitutional Law",
+    description: "Protection of fundamental rights, judicial review, writ petitions, and public interest litigation before superior courts.",
+    services: ["Writ Jurisdiction (Art. 32 & 226)", "Fundamental Rights & State Action", "Public Interest Litigation (PIL)"],
+    icon: Landmark,
+  },
+  {
+    id: "civil-law-dispute-resolution",
+    label: "Civil Law & Dispute Resolution",
+    title: "Civil Law and Dispute Resolution",
     description: "Comprehensive civil litigation, title disputes, contractual enforcement, and appellate remedies.",
     services: ["Property & Real Estate Disputes", "Contractual Breach & Recovery", "Injunctions & Judicial Remedies"],
     icon: Scale,
   },
   {
-    id: "family-law",
-    label: "Family Law",
-    title: "Family Law",
+    id: "family-matrimonial-law",
+    label: "Family & Matrimonial Law",
+    title: "Family and Matrimonial Law",
     description: "Confidential, empathetic, and pragmatic counsel to resolve domestic and matrimonial matters.",
     services: ["Matrimonial & Divorce Proceedings", "Child Custody & Guardianship", "Estate Succession & Family Settlements"],
     icon: Users,
@@ -46,7 +54,7 @@ export const heroPracticeAreas: HeroPracticeArea[] = [
   {
     id: "corporate-commercial-law",
     label: "Corporate & Commercial Law",
-    title: "Corporate & Commercial Law",
+    title: "Corporate and Commercial Law",
     description: "Strategic commercial contracting, governance, restructuring, and high-stakes dispute resolution.",
     services: ["Commercial Contracting & Alliances", "Corporate Governance & Compliance", "Restructuring & NCLT Matters"],
     icon: Building2,

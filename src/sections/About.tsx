@@ -4,7 +4,11 @@ export default function About() {
 			<div className="container-site about-layout">
 				<div>
 					<p className="eyebrow">About Chambers</p>
-					<h2 className="section-title">Thoughtful Counsel.<br />Principled Advocacy.</h2>
+					<h2 className="section-title">
+						<span className="title-line">Thoughtful Counsel.</span>
+						<br />
+						<span className="title-line">Principled Advocacy.</span>
+					</h2>
 				</div>
 				<div className="about-copy">
 					<p className="lead-copy">

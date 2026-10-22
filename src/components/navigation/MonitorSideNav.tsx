@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import logo from "../../assets/logo-black.png";
 import { handleNavClick } from "../../utils/navigation";
 import "./MonitorSideNav.css";
@@ -16,18 +16,6 @@ export default function MonitorSideNav({
 }: MonitorSideNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-
-  // Accordion state for expandable sections with [+]
-  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    capabilities: false,
-    insights: false,
-    ethos: false,
-  });
-
-  function toggleSection(key: string, event: React.MouseEvent) {
-    event.stopPropagation();
-    setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
-  }
 
   // Focus close button on open
   useEffect(() => {
@@ -116,7 +104,7 @@ export default function MonitorSideNav({
           </button>
         </div>
 
-        {/* Primary Navigation Items: About, People, PRACTICE AREAS, Achievements, Media */}
+        {/* Primary Navigation Items */}
         <nav className="monitor-side-nav-primary" aria-label="Main menu">
           {/* 1. ABOUT */}
           <div className="monitor-nav-item">
@@ -148,7 +136,7 @@ export default function MonitorSideNav({
             </div>
           </div>
 
-          {/* 3. PRACTICE AREAS [+] */}
+          {/* 3. PRACTICE AREAS */}
           <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
               <a
@@ -160,76 +148,7 @@ export default function MonitorSideNav({
               >
                 PRACTICE AREAS
               </a>
-              <button
-                type="button"
-                className={`monitor-nav-expand-btn ${
-                  expandedSections.capabilities ? "is-expanded" : ""
-                }`}
-                onClick={(e) => toggleSection("capabilities", e)}
-                aria-expanded={expandedSections.capabilities}
-                aria-label="Expand practice areas sub-menu"
-              >
-                +
-              </button>
             </div>
-            {expandedSections.capabilities && (
-              <ul className="monitor-nav-submenu">
-                <li>
-                  <a
-                    href="/practice-areas#practice-01"
-                    onClick={(e) => handleNavClick(e, "/practice-areas", onClose)}
-                    className="monitor-nav-sublink"
-                  >
-                    Corporate &amp; Commercial Law
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/practice-areas#practice-02"
-                    onClick={(e) => handleNavClick(e, "/practice-areas", onClose)}
-                    className="monitor-nav-sublink"
-                  >
-                    Civil Litigation &amp; Dispute Resolution
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/practice-areas#practice-03"
-                    onClick={(e) => handleNavClick(e, "/practice-areas", onClose)}
-                    className="monitor-nav-sublink"
-                  >
-                    Family &amp; Matrimonial Law
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/practice-areas#practice-04"
-                    onClick={(e) => handleNavClick(e, "/practice-areas", onClose)}
-                    className="monitor-nav-sublink"
-                  >
-                    Intellectual Property
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/practice-areas#practice-05"
-                    onClick={(e) => handleNavClick(e, "/practice-areas", onClose)}
-                    className="monitor-nav-sublink"
-                  >
-                    Criminal Defense &amp; White Collar
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/practice-areas#practice-06"
-                    onClick={(e) => handleNavClick(e, "/practice-areas", onClose)}
-                    className="monitor-nav-sublink"
-                  >
-                    Constitutional &amp; Administrative Law
-                  </a>
-                </li>
-              </ul>
-            )}
           </div>
 
           {/* 4. ACHIEVEMENTS */}
@@ -261,54 +180,41 @@ export default function MonitorSideNav({
               </a>
             </div>
           </div>
+
+          {/* 6. OFFICE */}
+          <div className="monitor-nav-item">
+            <div className="monitor-nav-item-row">
+              <a
+                href="/offices"
+                onClick={(e) => handleNavClick(e, "/offices", onClose)}
+                className={`monitor-nav-link ${
+                  currentPath === "/offices" || currentPath === "/office" ? "is-active" : ""
+                }`}
+              >
+                OFFICE
+              </a>
+            </div>
+          </div>
+
+          {/* 7. CONTACT */}
+          <div className="monitor-nav-item">
+            <div className="monitor-nav-item-row">
+              <a
+                href="/contact"
+                onClick={(e) => handleNavClick(e, "/contact", onClose)}
+                className={`monitor-nav-link ${
+                  currentPath === "/contact" ? "is-active" : ""
+                }`}
+              >
+                CONTACT
+              </a>
+            </div>
+          </div>
         </nav>
 
-        {/* Solid Horizontal Rule Divider */}
-        <hr className="monitor-side-nav-divider" />
-
-        {/* Secondary Navigation Below Divider: Office, Contact, Disclaimer, Privacy Policy */}
-        <div className="monitor-side-nav-secondary">
-          <a
-            href="/offices"
-            onClick={(e) => handleNavClick(e, "/offices", onClose)}
-            className={`monitor-secondary-link ${
-              currentPath === "/offices" || currentPath === "/office" ? "is-active" : ""
-            }`}
-          >
-            OFFICE
-          </a>
-          <a
-            href="/contact"
-            onClick={(e) => handleNavClick(e, "/contact", onClose)}
-            className={`monitor-secondary-link ${
-              currentPath === "/contact" ? "is-active" : ""
-            }`}
-          >
-            CONTACT
-          </a>
-          <a
-            href="/disclaimer"
-            onClick={(e) => handleNavClick(e, "/disclaimer", onClose)}
-            className={`monitor-secondary-link ${
-              currentPath === "/disclaimer" ? "is-active" : ""
-            }`}
-          >
-            DISCLAIMER
-          </a>
-          <a
-            href="/privacy-policy"
-            onClick={(e) => handleNavClick(e, "/privacy-policy", onClose)}
-            className={`monitor-secondary-link ${
-              currentPath === "/privacy-policy" || currentPath === "/policy" ? "is-active" : ""
-            }`}
-          >
-            PRIVACY POLICY
-          </a>
-        </div>
-
-        {/* Social Media Row at Bottom */}
+        {/* Social Media Row at Bottom
         <div className="monitor-side-nav-socials">
-          {/* LinkedIn */}
+          
           <a
             href="https://www.linkedin.com/company/chambers-of-t-k-nayak"
             target="_blank"
@@ -321,7 +227,7 @@ export default function MonitorSideNav({
             </svg>
           </a>
 
-          {/* X */}
+          
           <a
             href="https://x.com/tknayakchambers"
             target="_blank"
@@ -334,7 +240,7 @@ export default function MonitorSideNav({
             </svg>
           </a>
 
-          {/* Facebook */}
+          
           <a
             href="https://www.facebook.com"
             target="_blank"
@@ -347,7 +253,7 @@ export default function MonitorSideNav({
             </svg>
           </a>
 
-          {/* YouTube */}
+          
           <a
             href="https://www.youtube.com/@chambersoftknayak"
             target="_blank"
@@ -360,7 +266,7 @@ export default function MonitorSideNav({
             </svg>
           </a>
 
-          {/* Instagram */}
+          
           <a
             href="https://www.instagram.com/chambersoftknayak"
             target="_blank"
@@ -374,7 +280,7 @@ export default function MonitorSideNav({
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
             </svg>
           </a>
-        </div>
+        </div> */}
       </aside>
     </div>
   );

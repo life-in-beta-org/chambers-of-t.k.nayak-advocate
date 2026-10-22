@@ -203,40 +203,6 @@
   color: #800020;
 }
 
-/* Horizontal Rule Divider (Reference: Solid black/charcoal line) */
-.monitor-side-nav-divider {
-  border: 0;
-  border-top: 1.5px solid #182333;
-  margin: 1rem 2.5rem 1.5rem;
-}
-
-/* Secondary Navigation Below Divider (OFFICE, CONTACT) */
-.monitor-side-nav-secondary {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  padding: 0 2.5rem 1.75rem;
-}
-
-.monitor-secondary-link {
-  font-family: var(--font-body, "Figtree", sans-serif);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #182333;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.monitor-secondary-link:hover {
-  color: #800020;
-}
-
-.monitor-secondary-link.is-active {
-  color: #800020;
-}
-
 /* Social Media Icons Row (Reference: in, X, f, YouTube, Instagram) */
 .monitor-side-nav-socials {
   margin-top: auto;

@@ -8,7 +8,7 @@ import { handleNavClick } from "../../utils/navigation";
 const desktopNavigation = [
   { label: "ABOUT", href: "/about" },
   { label: "PRACTICE AREAS", href: "/practice-areas" },
-  { label: "MEDIA", href: "/media" },
+  { label: "IN THE MEDIA", href: "/media" },
 ];
 
 const mobileNavigation = [
@@ -19,8 +19,6 @@ const mobileNavigation = [
   { label: "MEDIA", href: "/media" },
   { label: "OFFICE", href: "/offices" },
   { label: "CONTACT", href: "/contact" },
-  { label: "DISCLAIMER", href: "/disclaimer" },
-  { label: "PRIVACY POLICY", href: "/privacy-policy" },
 ];
 
 export default function Header() {
@@ -63,50 +61,52 @@ export default function Header() {
               <img className="site-logo" src={logo} alt="Chambers of T. K. Nayak" />
             </a>
 
-            {/* Desktop Navigation Links (Monitor view) */}
-            <nav
-              aria-label="Main navigation"
-              className="hidden items-center gap-8 md:flex"
-            >
-              {desktopNavigation.map((item) => {
-                const isActive = currentPath === item.href;
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(event) => handleNavClick(event, item.href)}
-                    className={`header-link text-xs font-semibold tracking-wider transition-colors ${
-                      isActive ? "is-active font-bold" : ""
-                    }`}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {item.label}
-                  </a>
-                );
-              })}
-            </nav>
-
-            {/* Desktop Action Group: Contact CTA & Monitor Side Nav Slider Trigger */}
-            <div className="hidden md:flex items-center gap-4">
-              <a
-                href="/contact"
-                onClick={(e) => handleNavClick(e, "/contact")}
-                className="header-cta px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors"
+            <div className="hidden items-center gap-8 md:flex">
+              {/* Desktop Navigation Links (Monitor view) */}
+              <nav
+                aria-label="Main navigation"
+                className="flex items-center gap-8"
               >
-                Contact Us
-              </a>
+                {desktopNavigation.map((item) => {
+                  const isActive = currentPath === item.href;
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={(event) => handleNavClick(event, item.href)}
+                      className={`header-link text-xs font-semibold tracking-wider transition-colors ${
+                        isActive ? "is-active font-bold" : ""
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </nav>
 
-              {/* Monitor-only Side Nav Slider Button (3 lines) */}
-              <button
-                type="button"
-                className="inline-flex size-10 items-center justify-center text-[#0b1f37] hover:text-[#800020] transition-colors cursor-pointer"
-                aria-label="Open desktop side navigation panel"
-                aria-expanded={monitorNavOpen}
-                aria-controls="monitor-side-nav-drawer"
-                onClick={() => setMonitorNavOpen(true)}
-              >
-                <Menu size={24} strokeWidth={2} aria-hidden="true" />
-              </button>
+              {/* Desktop Action Group: Contact CTA & Monitor Side Nav Slider Trigger */}
+              <div className="flex items-center gap-4">
+                <a
+                  href="/contact"
+                  onClick={(e) => handleNavClick(e, "/contact")}
+                  className="header-cta px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors"
+                >
+                  Contact Us
+                </a>
+
+                {/* Monitor-only Side Nav Slider Button (3 lines) */}
+                <button
+                  type="button"
+                  className="inline-flex size-10 items-center justify-center text-[#0b1f37] hover:text-[#800020] transition-colors cursor-pointer"
+                  aria-label="Open desktop side navigation panel"
+                  aria-expanded={monitorNavOpen}
+                  aria-controls="monitor-side-nav-drawer"
+                  onClick={() => setMonitorNavOpen(true)}
+                >
+                  <Menu size={24} strokeWidth={2} aria-hidden="true" />
+                </button>
+              </div>
             </div>
 
             {/* Mobile / Tablet Menu Button (Existing mobile behavior) */}

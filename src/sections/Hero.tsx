@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import heroBg from "../assets/bg/3.jpg";
+import GhostFibers from "../components/GhostFibers";
 import { heroPracticeAreas } from "../data/heroPracticeAreas";
 
 export default function Hero() {
@@ -11,6 +11,9 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const activeArea = heroPracticeAreas[selectedIndex];
   const activeTag = activeArea.services[tagIndex % activeArea.services.length];
+  void setTabsPaused;
+  void setTagPaused;
+  void activeTag;
 
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -60,21 +63,60 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} id="home" className="hero-section">
-      {/* Hero Background Image from src/assets/bg */}
-      <div className="hero-bg-wrapper" aria-hidden="true">
-        <img src={heroBg} alt="" className="hero-bg-image" />
-        <div className="hero-bg-overlay" />
+      {/* GhostFibers Hero Background */}
+      <div
+        className="hero-fibers-bg"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+        aria-hidden="true"
+      >
+        <GhostFibers
+          glowColor="#315D91"
+          lineColor="#24476D"
+          secondaryColor="#527BA6"
+          gradient="depth"
+          layers={1}
+          twist={1.5}
+          threads={72}
+          fiberStyle="lines"
+          speed={0.25}
+          rollSpeed={0.08}
+          volume={0.5}
+          spread={1.3}
+          density={1.2}
+          thickness={1.2}
+          depthOfField={0.25}
+          focusDepth={0}
+          foldGlow={0.8}
+          particles={0}
+          sparkle={0.15}
+          glow={0}
+          brightness={2}
+          vignette={0}
+          grain={0}
+          lightMode={true}
+          hoverEffect="none"
+          mouseInteraction={false}
+          intro={true}
+        />
       </div>
 
       <div className="hero-grid container-site">
         <div className="hero-copy">
           <h1>
             <span className="hero-line text-8xl">
-              ROOTED IN <span className="hero-highlight">LAW</span>
+              Rooted in <span className="hero-highlight">Law</span>
             </span>
-            <span className="hero-line">DRIVEN BY PRINCIPLE.</span>
+            <span className="hero-line">Driven by Principle.</span>
           </h1>
-          <p
+          {/* <p
             key={activeTag}
             className="hero-rotating-tag"
             aria-live="polite"
@@ -82,7 +124,7 @@ export default function Hero() {
             onMouseLeave={() => setTagPaused(false)}
           >
             {activeTag}
-          </p>
+          </p> */}
           <p className="hero-description">
             The chambers handle litigation and advisory work in 
             service, criminal, constitutional, civil, family, 
@@ -92,7 +134,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <aside
+        {/* <aside
           className="hero-services"
           aria-label="Practice areas"
           onMouseEnter={() => setTabsPaused(true)}
@@ -115,7 +157,7 @@ export default function Hero() {
               </ul>
             </div>
           </div>
-        </aside>
+        </aside> */}
       </div>
     </section>
   );

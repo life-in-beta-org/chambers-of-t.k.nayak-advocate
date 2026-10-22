@@ -5,7 +5,7 @@ interface PracticeAreasProps {
 }
 
 export default function PracticeAreas({ page = false }: PracticeAreasProps) {
-	const visibleAreas = page ? practiceAreas : practiceAreas.slice(0, 4);
+	const visibleAreas = page ? practiceAreas : practiceAreas.slice(0, 6);
 
 	return (
 		<section id={page ? "practice-areas-page" : "practice-areas"} className="editorial-section practice-section section-wash">
@@ -13,10 +13,10 @@ export default function PracticeAreas({ page = false }: PracticeAreasProps) {
 				<div className="section-heading-row">
 					<div>
 						<p className="eyebrow">Areas of Practice</p>
-						<h2 className="section-title">Experience in law. <br/> Focused on you.</h2>
+						<h2 className="section-title">Many Fields. <br/>One Discipline.</h2>
 					</div>
 					<div className="section-intro-block">
-						<p className="section-intro">These categories are placeholders and should be revised against the chambers&apos; confirmed services.</p>
+						{/* <p className="section-intro">These categories are placeholders and should be revised against the chambers&apos; confirmed services.</p> */}
 						{!page && <a className="section-link" href="/practice-areas">View all practice areas <span aria-hidden="true">-&gt;</span></a>}
 					</div>
 				</div>

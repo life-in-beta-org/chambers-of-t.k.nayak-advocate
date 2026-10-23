@@ -20,7 +20,6 @@ export default function About() {
 						</p>
 						<p>
 							Our team believes that sound advocacy begins long before the courtroom. Every matter receives thoughtful preparation, meticulous attention to detail, and a commitment to building a strong legal strategy from the very beginning.
-
 						</p>
 					</div>
 				</div>

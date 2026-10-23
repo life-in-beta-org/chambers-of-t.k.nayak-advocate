@@ -166,7 +166,6 @@ export default function MonitorSideNav({
             </div>
           </div>
 
-          {/* 4. ACHIEVEMENTS */}
           {/* 4. MEDIA */}
           <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
@@ -183,7 +182,7 @@ export default function MonitorSideNav({
           </div>
 
           {/* 5. OFFICE */}
-          <div className="monitor-nav-item">
+          {/* <div className="monitor-nav-item">
             <div className="monitor-nav-item-row">
               <a
                 href="/offices"
@@ -195,7 +194,7 @@ export default function MonitorSideNav({
                 OFFICE
               </a>
             </div>
-          </div>
+          </div> */}
 
           {/* 6. CONTACT */}
           <div className="monitor-nav-item">

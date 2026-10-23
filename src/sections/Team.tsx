@@ -9,7 +9,7 @@ export default function Team() {
 					<p className="eyebrow">Our Advocate</p>
 					<p className="lead-copy">Tarini Kamakhya Nayak</p>
 					<p>
-						<strong className="team-profile-name">Tarini Kamakhya Nayak</strong> 
+						<strong className="team-profile-name">Tarini Kamakhya Nayak </strong> 
 						is an advocate with an established practice before the Supreme Court 
 						of India and various High Courts across the country, appearing in service, 
 						criminal, constitutional, civil and commercial matters. Based in New Delhi, 

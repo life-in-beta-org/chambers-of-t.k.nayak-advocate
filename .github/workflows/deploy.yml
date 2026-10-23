@@ -44,13 +44,9 @@ jobs:
         run: npm run build
 
       # App.tsx uses pathname-based routes. Generate an index.html at each
-      # route so GitHub Pages can serve direct visits and browser refreshes.
+      # route and a 404.html fallback so GitHub Pages can serve direct visits and browser refreshes.
       - name: Prepare client-side routes for GitHub Pages
-        run: |
-          mkdir -p dist/practice-areas dist/legal-updates dist/media
-          cp dist/index.html dist/practice-areas/index.html
-          cp dist/index.html dist/legal-updates/index.html
-          cp dist/index.html dist/media/index.html
+        run: node scripts/prepare-routes.js
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

@@ -17,7 +17,7 @@ const mobileNavigation = [
   { label: "ABOUT", href: "/about" },
   { label: "PEOPLE", href: "/people" },
   { label: "PRACTICE AREAS", href: "/practice-areas" },
-  { label: "ACHIEVEMENTS", href: "/achievements" },
+  // { label: "ACHIEVEMENTS", href: "/achievements" },
   { label: "MEDIA", href: "/media" },
   { label: "OFFICE", href: "/offices" },
   { label: "CONTACT", href: "/contact" },

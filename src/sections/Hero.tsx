@@ -12,6 +12,7 @@ export default function Hero() {
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const line1Ref = useRef<HTMLSpanElement>(null);
   const line2Ref = useRef<HTMLSpanElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
   const activeArea = heroPracticeAreas[selectedIndex];
   const activeTag = activeArea.services[tagIndex % activeArea.services.length];
   void setTabsPaused;
@@ -86,12 +87,22 @@ export default function Hero() {
       line1.style.setProperty("--hero-line1-scale", `${ratio}`);
       line1.style.fontSize = `calc(${ratio} * 1em)`;
 
+      if (descRef.current) {
+        descRef.current.style.width = `${w2}px`;
+        descRef.current.style.maxWidth = `${w2}px`;
+      }
+
       requestAnimationFrame(() => {
         const updatedW1 = line1.getBoundingClientRect().width;
         if (updatedW1 > 0 && Math.abs(updatedW1 - w2) > 0.4) {
           const fineRatio = (ratio * w2) / updatedW1;
           line1.style.setProperty("--hero-line1-scale", `${fineRatio}`);
           line1.style.fontSize = `calc(${fineRatio} * 1em)`;
+        }
+        const spanWidth = line2.getBoundingClientRect().width;
+        if (descRef.current && spanWidth > 0) {
+          descRef.current.style.width = `${spanWidth}px`;
+          descRef.current.style.maxWidth = `${spanWidth}px`;
         }
       });
     };
@@ -171,16 +182,7 @@ export default function Hero() {
               Driven by Principle.
             </span>
           </h1>
-          {/* <p
-            key={activeTag}
-            className="hero-rotating-tag"
-            aria-live="polite"
-            onMouseEnter={() => setTagPaused(true)}
-            onMouseLeave={() => setTagPaused(false)}
-          >
-            {activeTag}
-          </p> */}
-          <p className="hero-description">
+          <p ref={descRef} className="hero-description">
             The chambers handle litigation and advisory work in 
             service, criminal, constitutional, civil, family, 
             corporate and intellectual property law, appearing 
@@ -188,31 +190,6 @@ export default function Hero() {
             the country, and the district courts.
           </p>
         </div>
-
-        {/* <aside
-          className="hero-services"
-          aria-label="Practice areas"
-          onMouseEnter={() => setTabsPaused(true)}
-          onMouseLeave={() => setTabsPaused(false)}
-        >
-          <div
-            id="hero-practice-panel"
-            className="hero-practice-panel"
-            role="tabpanel"
-            aria-live="polite"
-            aria-labelledby={`hero-tab-${activeArea.id}`}
-          >
-            <div key={activeArea.id} className="hero-panel-content">
-              <p className="service-intro">{activeArea.title}</p>
-              <p className="service-detail">{activeArea.description}</p>
-              <ul>
-                {activeArea.services.map((service) => (
-                  <li key={service}>{service}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </aside> */}
       </div>
     </section>
   );

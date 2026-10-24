@@ -255,6 +255,8 @@ export default function Contact() {
               <option>Family and matrimonial law</option>
               <option>Corporate and Commercial law</option>
               <option>Intellectual Property Rights</option>
+              <option>Consumer law</option>
+              <option>Environmental law</option>
               <option>Other / to be confirmed</option>
             </select>
             {errors.subject && (
@@ -292,9 +294,6 @@ export default function Contact() {
               disabled={isSending}
             >
               {isSending ? "Sending..." : "Submit"}
-              {!isSending && (
-                <span aria-hidden="true"> -&gt;</span>
-              )}
             </button>
 
             {notice && (

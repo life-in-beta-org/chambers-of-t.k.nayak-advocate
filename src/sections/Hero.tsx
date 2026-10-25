@@ -137,11 +137,11 @@ export default function Hero() {
             </span>
           </h1>
           <p ref={descRef} className="hero-description">
-            The chambers handle litigation and advisory work in 
-            service, criminal, constitutional, civil, family, 
-            corporate and intellectual property law, appearing 
-            before the Supreme Court of India, High Courts across 
-            the country, and the district courts.
+            Welcome to the Chambers of T. K. Nayak.
+            <br /><br />
+            We are a litigation and advisory practice based in New Delhi, with an active presence in Tripura, Meghalaya and West Bengal. We appear before the Supreme Court of India, High Courts across the country and the district courts, as well as tribunals other quasi-judicial bodies.
+            <br /><br />
+            Our practice covers service, criminal, constitutional, civil, family, corporate, intellectual property, consumer and environmental law. Whether a matter calls for advice or for litigation, it is approached the same way: a thorough understanding of the facts, careful legal research, and clear communication with the client at every stage.
           </p>
         </div>
       </div>

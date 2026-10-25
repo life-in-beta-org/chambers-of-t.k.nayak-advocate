@@ -129,6 +129,23 @@
   margin-top: .75rem;
 }
 
+.hero-about-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-about-fibers-bg {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: -100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .hero-section {
   position: relative;
   min-height: calc(100vh - 81px + clamp(2rem, 3vw, 4rem));
@@ -377,31 +394,21 @@
 
 .about-section {
   position: relative;
-  z-index: 4;
+  z-index: 1;
   margin-top: clamp(-4rem, -5vw, -2rem);
-  background: var(--color-ivory);
-  isolation: isolate;
+  background: transparent;
 }
 
 .about-section::before {
-  position: absolute;
-  z-index: 0;
-  top: -110px;
-  right: 0;
-  left: 0;
-  height: 110px;
-  background: linear-gradient(
-    to bottom,
-    rgb(248 247 243 / 0%) 0%,
-    rgb(248 247 243 / 24%) 32%,
-    rgb(248 245 236 / 78%) 68%,
-    rgb(248 245 236 / 100%) 100%
-  );
-  content: "";
-  pointer-events: none;
+  display: none;
 }
 
 .about-section > * { position: relative; z-index: 1; }
+
+.practice-section {
+  position: relative;
+  z-index: 2;
+}
 
 .hero-stats {
   position: absolute;
@@ -527,7 +534,7 @@
     white-space: normal;
   }
 }
-.about-copy { padding-top: 4rem; }
+.about-copy { padding-top: 2.8rem; }
 .about-copy .lead-copy,
 .about-copy .about-detail-grid p {
   text-align: justify;
@@ -545,7 +552,7 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 0.5rem;
-  color: var(--text-muted);
+  /* color: var(--text-muted); */
   font-size: 1.1rem;
   line-height: 1.65;
 }

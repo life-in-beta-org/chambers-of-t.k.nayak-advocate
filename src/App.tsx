@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Hero from "./sections/Hero";
+import HeroAboutBackground from "./components/HeroAboutBackground";
 import Media from "./sections/Media";
 import PracticeAreas from "./sections/PracticeAreas";
 import PracticeAreasPage from "./pages/PracticeAreasPage";
@@ -68,8 +69,11 @@ export default function App() {
 
     return (
       <SiteFrame>
-        <Hero />
-        <About />
+        <div className="hero-about-wrapper">
+          <HeroAboutBackground />
+          <Hero />
+          <About />
+        </div>
         <PracticeAreas />
         {/* <Team /> */}
         {/* <Updates /> */}

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import GhostFibers from "../components/GhostFibers";
 import { heroPracticeAreas } from "../data/heroPracticeAreas";
 
 export default function Hero() {
@@ -127,51 +126,6 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} id="home" className="hero-section">
-      {/* GhostFibers Hero Background */}
-      <div
-        className="hero-fibers-bg"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 0,
-          overflow: "hidden",
-          pointerEvents: "none",
-        }}
-        aria-hidden="true"
-      >
-<GhostFibers
-  glowColor="#315D91"
-  lineColor="#24476D"
-  secondaryColor="#527BA6"
-  gradient="depth"
-  layers={1}
-  twist={1.5}
-  threads={90}
-  fiberStyle="lines"
-  speed={0.25}
-  rollSpeed={0.08}
-  volume={0.5}
-  spread={1.3}
-  density={1.2}
-  thickness={1.6}
-  depthOfField={0}
-  focusDepth={0}
-  foldGlow={0.8}
-  particles={0}
-  sparkle={0.1}
-  glow={0}
-  brightness={1.6}
-  vignette={0}
-  grain={0}
-  lightMode={true}
-  hoverEffect="none"
-  mouseInteraction={false}
-  intro={true}
-/>
-      </div>
-
       <div className="hero-grid container-site">
         <div className="hero-copy">
           <h1 ref={h1Ref}>

@@ -71,6 +71,43 @@ export default function Hero() {
     if (!line1 || !line2 || !h1) return;
 
     const alignLines = () => {
+      const isMobile = window.innerWidth <= 768;
+
+      if (isMobile) {
+        if (descRef.current) {
+          descRef.current.style.width = "100%";
+          descRef.current.style.maxWidth = "100%";
+        }
+
+        line2.style.fontSize = "";
+        line1.style.fontSize = "";
+        line1.style.removeProperty("--hero-line1-scale");
+
+        const containerWidth = h1.parentElement?.clientWidth || h1.getBoundingClientRect().width;
+        const w2 = line2.getBoundingClientRect().width;
+        const w1 = line1.getBoundingClientRect().width;
+
+        if (containerWidth > 0 && w2 > 0 && w1 > 0) {
+          const comp2 = window.getComputedStyle(line2);
+          const fs2 = parseFloat(comp2.fontSize) || 28;
+          const targetW = containerWidth - 2;
+          const scale2 = Math.min(Math.max(targetW / w2, 0.8), 1.55);
+          const newFs2 = fs2 * scale2;
+          line2.style.fontSize = `${newFs2}px`;
+
+          const currentW2 = line2.getBoundingClientRect().width;
+          const currentW1 = line1.getBoundingClientRect().width;
+          if (currentW1 > 0 && currentW2 > 0) {
+            const comp1 = window.getComputedStyle(line1);
+            const fs1 = parseFloat(comp1.fontSize) || newFs2;
+            const targetFs1 = (fs1 * currentW2) / currentW1;
+            line1.style.fontSize = `${targetFs1}px`;
+          }
+        }
+        return;
+      }
+
+      line2.style.fontSize = "";
       const w2 = line2.getBoundingClientRect().width;
       const w1 = line1.getBoundingClientRect().width;
       if (!w1 || !w2) return;
@@ -139,7 +176,7 @@ export default function Hero() {
           <p ref={descRef} className="hero-description">
             Welcome to the Chambers of T. K. Nayak.
             <br /><br />
-            We are a litigation and advisory practice based in New Delhi, with an active presence in Tripura, Meghalaya and West Bengal. We appear before the Supreme Court of India, High Courts across the country and the district courts, as well as tribunals other quasi-judicial bodies.
+            We are a litigation and advisory practice based in New Delhi, with an active presence in Tripura, Meghalaya and West Bengal. We appear before the Supreme Court of India, High Courts across the country, district courts as well as tribunals and other quasi-judicial bodies.
             <br /><br />
             Our practice covers service, criminal, constitutional, civil, family, corporate, intellectual property, consumer and environmental law. Whether a matter calls for advice or for litigation, it is approached the same way: a thorough understanding of the facts, careful legal research, and clear communication with the client at every stage.
           </p>

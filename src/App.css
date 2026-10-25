@@ -438,10 +438,34 @@
 }
 
 @media (max-width: 900px) {
-  .hero-copy { width: fit-content; max-width: 100%; }
   .hero-figure { left: 32%; width: 52%; top: 8rem; }
   .hero-services { top: 4rem; width: 26%; }
   .hero-stats { bottom: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 2rem;
+  }
+  .hero-copy h1 {
+    width: 95% !important;
+    max-width: 95% !important;
+    font-size: clamp(1.85rem, 8.5vw, 3.2rem);
+  }
+  .hero-copy h1 .hero-line {
+    white-space: nowrap;
+  }
+  .hero-description {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 1.75rem;
+    hyphens: none;
+    text-align: justify;
+    text-justify: inter-word;
+  }
 }
 
 @media (max-width: 640px) {
@@ -449,8 +473,8 @@
   .site-logo { width: 165px; }
   .hero-section, .hero-grid { min-height: 0; }
   .hero-grid { display: flex; flex-direction: column; padding-top: 3rem; }
-  .hero-copy { width: 100%; }
-  .hero-copy h1 { font-size: clamp(1.5rem, 7.5vw, 3.2rem); }
+  .hero-copy { width: 100% !important; max-width: 100% !important; }
+  .hero-copy h1 { width: 100% !important; max-width: 100% !important; font-size: clamp(1.85rem, 8.5vw, 3.2rem); }
   .hero-copy h1 .hero-line { white-space: nowrap; }
   .hero-bottom-word {
     right: auto;
@@ -459,7 +483,15 @@
     font-size: clamp(3rem, 16vw, 8rem);
     letter-spacing: .02em;
   }
-  .hero-description { margin-top: 1.75rem; }
+  .hero-description {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 1.75rem;
+    hyphens: none;
+    text-align: justify;
+    text-justify: inter-word;
+  }
   .hero-figure { position: relative; top: auto; left: auto; width: 82%; max-height: clamp(18rem, 76vw, 27rem); margin: -1rem auto -1rem 16%; }
   .hero-figure img { max-height: clamp(18rem, 76vw, 27rem); object-fit: contain; }
   .hero-services { position: relative; top: auto; right: auto; width: 100%; margin-top: 1rem; }

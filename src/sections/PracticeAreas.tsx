@@ -61,7 +61,7 @@ export default function PracticeAreas({ page = false }: PracticeAreasProps) {
 										<h3>{area.title}</h3>
 										<span className="practice-preview">{area.description}</span>
 									</span>
-									<span className="practice-arrow" aria-hidden="true">-&gt;</span>
+									{/* <span className="practice-arrow" aria-hidden="true">-&gt;</span> */}
 								</button>
 								<div
 									id={`practice-dropdown-${area.number}`}

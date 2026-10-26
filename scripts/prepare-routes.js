@@ -22,18 +22,18 @@ console.log("Created dist/404.html");
 const routes = [
   "about",
   "people",
-  "our-team",
+  // "our-team",
   "practice-areas",
   "achievements",
-  "awards",
+  // "awards",
   "media",
-  "offices",
-  "office",
+  // "offices",
+  // "office",
   "contact",
   "disclaimer",
   "privacy-policy",
-  "policy",
-  "legal-updates",
+  // "policy",
+  // "legal-updates",
 ];
 
 for (const route of routes) {

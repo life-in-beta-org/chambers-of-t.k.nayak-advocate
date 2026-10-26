@@ -447,12 +447,12 @@
   .hero-copy {
     width: 100% !important;
     max-width: 100% !important;
-    margin-top: 2rem;
+    margin-top: 5rem;
   }
   .hero-copy h1 {
     width: 95% !important;
     max-width: 95% !important;
-    font-size: clamp(1.85rem, 8.5vw, 3.2rem);
+    font-size: clamp(1.75rem, 8.0vw, 3.0rem);
   }
   .hero-copy h1 .hero-line {
     white-space: nowrap;

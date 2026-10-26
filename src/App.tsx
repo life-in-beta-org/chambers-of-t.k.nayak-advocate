@@ -7,7 +7,6 @@ import HeroAboutBackground from "./components/HeroAboutBackground";
 import Media from "./sections/Media";
 import PracticeAreas from "./sections/PracticeAreas";
 import PracticeAreasPage from "./pages/PracticeAreasPage";
-import LegalUpdatesPage from "./pages/LegalUpdatesPage";
 import MediaPage from "./pages/MediaPage";
 import AboutPage from "./pages/AboutPage";
 import PeoplePage from "./pages/PeoplePage";
@@ -36,22 +35,25 @@ export default function App() {
 
   useEffect(() => {
     const titles: Record<string, string> = {
-      "/": "Chambers of T. K. Nayak — Advocate",
-      "/about": "About the Chambers — Chambers of T. K. Nayak",
+      "/": "Chambers of T. K. Nayak Advocate",
+      "/about": "About the Chambers — T. K. Nayak",
       "/people": "Our People & Advocates — Chambers of T. K. Nayak",
-      "/our-team": "Our People & Advocates — Chambers of T. K. Nayak",
+      // "/our-team": "Our People & Advocates — Chambers of T. K. Nayak",
       "/practice-areas": "Areas of Practice — Chambers of T. K. Nayak",
-      "/achievements": "Achievements & Accolades — Chambers of T. K. Nayak",
-      "/awards": "Achievements & Accolades — Chambers of T. K. Nayak",
+      // "/achievements": "Achievements & Accolades — Chambers of T. K. Nayak",
+      // "/awards": "Achievements & Accolades — Chambers of T. K. Nayak",
       "/media": "In the Media — Chambers of T. K. Nayak",
-      "/offices": "Office Locations — Chambers of T. K. Nayak",
-      "/office": "Office Locations — Chambers of T. K. Nayak",
+      // "/offices": "Office Locations — Chambers of T. K. Nayak",
+      // "/office": "Office Locations — Chambers of T. K. Nayak",
       "/contact": "Contact — Chambers of T. K. Nayak",
       "/disclaimer": "Disclaimer & Confirmation — Chambers of T. K. Nayak",
       "/privacy-policy": "Privacy Policy — Chambers of T. K. Nayak",
-      "/policy": "Privacy Policy — Chambers of T. K. Nayak",
-      "/legal-updates": "Legal Updates — Chambers of T. K. Nayak",
+      // "/policy": "Privacy Policy — Chambers of T. K. Nayak",
+      // "/legal-updates": "Legal Updates — Chambers of T. K. Nayak",
     };
+    if (pathname === "/legal-updates") {
+      window.history.replaceState({}, "", "/");
+    }
     document.title = titles[pathname] ?? titles["/"];
   }, [pathname]);
 
@@ -65,7 +67,6 @@ export default function App() {
     if (pathname === "/contact") return <SiteFrame includeContact={false}><ContactPage /></SiteFrame>;
     if (pathname === "/disclaimer") return <SiteFrame><DisclaimerPage /></SiteFrame>;
     if (pathname === "/privacy-policy" || pathname === "/policy") return <SiteFrame><PrivacyPolicyPage /></SiteFrame>;
-    if (pathname === "/legal-updates") return <SiteFrame><LegalUpdatesPage /></SiteFrame>;
 
     return (
       <SiteFrame>
@@ -76,7 +77,6 @@ export default function App() {
         </div>
         <PracticeAreas />
         {/* <Team /> */}
-        {/* <Updates /> */}
         <Media />
         {/* <Offices /> */}
       </SiteFrame>
